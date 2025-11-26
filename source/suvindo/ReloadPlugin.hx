@@ -13,6 +13,10 @@ class ReloadPlugin extends FlxBasic
 		super();
 
 		reload = new FlxSignal();
+
+		FlxG.signals.preStateSwitch.add(() -> {
+			reload.removeAll();
+		});
 	}
 
 	override function update(elapsed:Float)

@@ -43,8 +43,7 @@ class PlayState extends FlxState
 			{
 				for (block in world_info.blocks)
 				{
-					var old_block:Block = new Block(block.block_id, block.x, block.y);
-					blocks.add(old_block);
+					blocks.add(new Block(block.block_id, block.x, block.y));
 				}
 			}
 
@@ -61,12 +60,19 @@ class PlayState extends FlxState
 
 	public function reloadFunction()
 	{
-		world_info = {};
+		world_info = {
+			cursor_block: null,
+			blocks: []
+		};
 		world_info.cursor_block = {
 			x: cursor_block.x,
 			y: cursor_block.y,
 		}
-		world_info.blocks = blocks.members.copy();
+		if (blocks.members != null)
+			for (block in blocks.members)
+			{
+				world_info.blocks.push(block);
+			}
 
 		trace('RELOAD!');
 		FlxG.resetState();
