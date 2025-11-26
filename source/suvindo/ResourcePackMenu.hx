@@ -72,5 +72,13 @@ class ResourcePackMenu extends FlxState
 			if (cur_selected > pack_texts.length - 1)
 				cur_selected--;
 		}
+
+        if (FlxG.keys.justReleased.ENTER)
+        {
+            if (ResourcePacks.ENABLED_RESOURCE_PACKS.contains(pack_list[cur_selected]))
+                ResourcePacks.ENABLED_RESOURCE_PACKS.remove(pack_list[cur_selected]);
+            else
+                ResourcePacks.ENABLED_RESOURCE_PACKS.insert(cur_selected, pack_list[cur_selected]);
+        }
 	}
 }
