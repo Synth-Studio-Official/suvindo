@@ -19,7 +19,7 @@ class PlayState extends FlxState
 		blocks = new FlxTypedGroup<Block>();
 		add(blocks);
 
-		cursor_block = new Block('plank');
+		cursor_block = new Block(BlockList.BLOCK_LIST[0]);
 		add(cursor_block);
 		cursor_block.hsv_shader.saturation = 2;
 		cursor_block.x = 16 * ((FlxG.width / 16) / 2);
@@ -30,6 +30,14 @@ class PlayState extends FlxState
 	override public function update(elapsed:Float)
 	{
 		super.update(elapsed);
+
+		#if sys
+		if (FlxG.keys.justReleased.R)
+		{
+			BlockList.reload();
+			cursor_block.switchBlock(BlockList.BLOCK_LIST[0]);
+		}
+		#end
 
 		if (FlxG.keys.anyJustReleased([W, A, S, D, UP, LEFT, DOWN, RIGHT, ENTER, DELETE, TAB]))
 		{
