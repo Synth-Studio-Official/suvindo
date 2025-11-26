@@ -14,7 +14,8 @@ class ReloadPlugin extends FlxBasic
 
 		reload = new FlxSignal();
 
-		FlxG.signals.preStateSwitch.add(() -> {
+		FlxG.signals.preStateSwitch.add(() ->
+		{
 			reload.removeAll();
 		});
 	}
@@ -34,6 +35,6 @@ class ReloadPlugin extends FlxBasic
 		ResourcePacks.reload();
 		BlockList.reload();
 
-        reload.dispatch();
+		reload.dispatch();
 	}
 }
