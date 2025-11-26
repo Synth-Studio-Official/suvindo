@@ -69,7 +69,7 @@ class ResourcePackMenu extends FlxState
 		if (FlxG.keys.anyJustReleased([S, DOWN]))
 		{
 			cur_selected++;
-			if (cur_selected > pack_texts.length)
+			if (cur_selected > pack_texts.length - 1)
 				cur_selected--;
 		}
 	}
