@@ -25,5 +25,7 @@ class BlockList
         #else
         BLOCK_LIST = ['plank'];
         #end
+
+        trace('block list: ' + BLOCK_LIST);
     }
 }
