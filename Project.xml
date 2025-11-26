@@ -37,8 +37,8 @@
 	<assets path="assets/base" rename="assets"/>
 	<assets path="assets/embed" rename="assets" embed="true"/>
 	
-	<assets path="assets/sys" rename="assets" if="sys"/>
-	<assets path="assets/not_sys" rename="assets" unless="sys"/>
+	<assets path="assets/sys" rename="assets" if="sys || hl"/>
+	<assets path="assets/not_sys" rename="assets" unless="sys || hl"/>
 
 	<!-- _______________________________ Libraries ______________________________ -->
 
