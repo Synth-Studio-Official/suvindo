@@ -23,7 +23,7 @@ class Block extends FlxSprite
 
 	public function switchBlock(new_block:String)
 	{
-		loadGraphic(FlxGraphic.fromBitmapData(BitmapData.fromFile('assets/images/blocks/' + new_block + '.png')));
+		loadGraphic(FlxGraphic.fromBitmapData(BitmapData.fromFile(ResourcePacks.getPath('images/blocks/' + new_block + '.png'))));
 
 		this.scale.set(1 * (16 / this.graphic.width), 1 * (16 / this.graphic.height));
 		this.updateHitbox();

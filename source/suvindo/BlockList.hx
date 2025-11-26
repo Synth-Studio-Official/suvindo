@@ -18,13 +18,13 @@ class BlockList
         BLOCK_LIST = [];
 
         #if sys
-        for (image in FileSystem.readDirectory('assets/images/blocks/'))
+        for (image in ResourcePacks.readDirectory('images/blocks/'))
         {
-            if (image.endsWith('.png') && !FileSystem.isDirectory('assets/images/blocks/'+image))
+            if (image.endsWith('.png') && !FileSystem.isDirectory(image))
                 BLOCK_LIST.push(Path.withoutExtension(image));
         }
         #else
-        BLOCK_LIST = Assets.getText('assets/data/blocks-list.txt').split('\n');
+        BLOCK_LIST = Assets.getText(ResourcePacks.getPath('data/blocks-list.txt')).split('\n');
         #end
 
         trace('block list: ' + BLOCK_LIST);
