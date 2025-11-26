@@ -40,6 +40,9 @@
 	<assets path="assets/sys" rename="assets" if="sys || hl"/>
 	<assets path="assets/not_sys" rename="assets" unless="sys || hl"/>
 
+	<assets path="resources"/>
+	<assets path=".dev/debug-resources" rename="resources" if="debug"/>
+
 	<!-- _______________________________ Libraries ______________________________ -->
 
 	<haxelib name="flixel" />
