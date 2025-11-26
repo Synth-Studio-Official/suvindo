@@ -1,16 +1,22 @@
 package suvindo;
 
+import funkin.graphics.shaders.HSVShader;
 import flixel.FlxSprite;
 
 class Block extends FlxSprite
 {
 	public var block_id:String;
 
+	public var hsv_shader:HSVShader;
+
 	override public function new(block_id:String, ?X:Float, ?Y:Float)
 	{
 		super(X, Y);
 
 		switchBlock(block_id);
+
+		hsv_shader = new HSVShader();
+		this.shader = hsv_shader;
 	}
 
 	public function switchBlock(new_block:String)
