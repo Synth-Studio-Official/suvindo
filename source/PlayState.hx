@@ -20,6 +20,8 @@ class PlayState extends FlxState
 
 		cursor_block = new Block('plank');
 		add(cursor_block);
+		cursor_block.x = 16 * ((FlxG.width / 16) / 2);
+		cursor_block.y = 16 * ((FlxG.height / 16) / 2);
 		cursor_block.alpha = .5;
 	}
 
@@ -27,6 +29,26 @@ class PlayState extends FlxState
 	{
 		super.update(elapsed);
 
-		cursor_block.setPosition((FlxG.mouse.x / 16), (FlxG.mouse.y / 16));
+		if (FlxG.keys.anyJustReleased([W, A, S, D, UP, LEFT, DOWN, RIGHT]))
+		{
+			if (FlxG.keys.anyJustReleased([W, UP]))
+				cursor_block.y -= cursor_block.height;
+			if (FlxG.keys.anyJustReleased([A, LEFT]))
+				cursor_block.x -= cursor_block.width;
+			if (FlxG.keys.anyJustReleased([S, DOWN]))
+				cursor_block.y += cursor_block.height;
+			if (FlxG.keys.anyJustReleased([D, RIGHT]))
+				cursor_block.x += cursor_block.width;
+
+			if (cursor_block.x < 0)
+				cursor_block.x = 0;
+			if (cursor_block.x > FlxG.width - cursor_block.width)
+				cursor_block.x = FlxG.width - cursor_block.width;
+
+			if (cursor_block.y < 0)
+				cursor_block.y = 0;
+			if (cursor_block.y > FlxG.height - cursor_block.height)
+				cursor_block.y = FlxG.height - cursor_block.height;
+		}
 	}
 }
