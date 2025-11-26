@@ -60,7 +60,7 @@ class PlayState extends FlxState
 		ReloadPlugin.reload.add(reloadFunction);
 	}
 
-	public function reloadFunction()
+	public function saveWorldInfo()
 	{
 		world_info = {
 			cursor_block: null,
@@ -75,6 +75,11 @@ class PlayState extends FlxState
 			{
 				world_info.blocks.push(block);
 			}
+	}
+
+	public function reloadFunction()
+	{
+		saveWorldInfo();
 
 		trace('RELOAD!');
 		FlxG.resetState();
@@ -97,6 +102,7 @@ class PlayState extends FlxState
 
 		if (FlxG.keys.justReleased.P)
 		{
+			saveWorldInfo();
 			FlxG.switchState(() -> new ResourcePackMenu());
 		}
 
