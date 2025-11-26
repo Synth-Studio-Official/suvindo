@@ -152,6 +152,10 @@ class ResourcePacks
 		if (pack_version < MIN_PACK_VERSION)
 			add_warning("Below the minimum supported version number");
 
+
+		if (warning == "")
+			warning = "None";
+
 		return warning;
 	}
 }
