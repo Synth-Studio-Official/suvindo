@@ -1,5 +1,6 @@
 package;
 
+import suvindo.BlockList;
 import flixel.FlxG;
 import suvindo.Block;
 import flixel.group.FlxGroup.FlxTypedGroup;
@@ -30,7 +31,7 @@ class PlayState extends FlxState
 	{
 		super.update(elapsed);
 
-		if (FlxG.keys.anyJustReleased([W, A, S, D, UP, LEFT, DOWN, RIGHT, ENTER, DELETE]))
+		if (FlxG.keys.anyJustReleased([W, A, S, D, UP, LEFT, DOWN, RIGHT, ENTER, DELETE, TAB]))
 		{
 			if (FlxG.keys.anyJustReleased([W, UP]))
 				cursor_block.y -= cursor_block.height;
@@ -71,6 +72,23 @@ class PlayState extends FlxState
 						blocks.members.remove(minor);
 						minor.destroy();
 					}
+			}
+
+			if (FlxG.keys.justReleased.TAB)
+			{
+				var index:Int = BlockList.BLOCK_LIST.indexOf(cursor_block.block_id);
+
+				if (FlxG.keys.pressed.SHIFT)
+					index--;
+				else
+					index++;
+
+				if (index < 0)
+					index = BlockList.BLOCK_LIST.length - 1;
+				if (index > BlockList.BLOCK_LIST.length - 1)
+					index = 0;
+
+				cursor_block.switchBlock(BlockList.BLOCK_LIST[index]);
 			}
 		}
 	}
