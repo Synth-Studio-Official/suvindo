@@ -22,7 +22,7 @@ class ResourcePackMenu extends FlxState
 	override function create()
 	{
 		super.create();
-		pack_list = ResourcePacks.ENABLED_RESOURCE_PACKS.copy();
+		pack_list = ResourcePacks.RESOURCE_PACKS.copy();
 		literal_pack_list = [];
 
 		pack_texts = new FlxTypedGroup<FlxText>();
@@ -34,12 +34,10 @@ class ResourcePackMenu extends FlxState
 			var pack_txt:FlxText = new FlxText(2, 2, 0, pack_id, 16);
 			pack_txt.y += 20 * i;
 			pack_texts.add(pack_txt);
-            pack_txt.ID = i;
 
 			#if sys
 			var pack_file:ResourcePack = Json.parse(File.getContent('resources/' + pack_id + '/pack.json'));
-			
-            pack_txt.text = pack_file.name;
+            literal_pack_list.push(pack_file);
             #end
 
 			i++;
@@ -52,7 +50,9 @@ class ResourcePackMenu extends FlxState
 
         for (pack_text in pack_texts)
         {
+            pack_text.ID = pack_list.indexOf(pack_text.text);
             pack_text.color = (pack_text.ID == cur_selected) ? FlxColor.YELLOW : FlxColor.WHITE;
+            pack_text.alpha = (ResourcePacks.ENABLED_RESOURCE_PACKS.contains(pack_text.text)) ? 1 : 0.5;
         }
 	}
 }
