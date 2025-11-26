@@ -54,8 +54,15 @@ class ResourcePackMenu extends FlxState
 		camFollow = new FlxObject(FlxG.width / 2);
 		add(camFollow);
 
+		packInfo = new FlxText(FlxG.width / 2, 2, FlxG.width / 2, "", 32);
+		add(packInfo);
+		packInfo.alignment = RIGHT;
+		packInfo.scrollFactor.set();
+
 		FlxG.camera.follow(camFollow, LOCKON, .1);
 	}
+
+	public var packInfo:FlxText;
 
 	override function update(elapsed:Float)
 	{
@@ -70,6 +77,18 @@ class ResourcePackMenu extends FlxState
 
 			if (pack_text.ID == cur_selected)
 				camFollow.y = pack_text.y;
+		}
+
+		if (literal_pack_list.length > 0)
+		{
+			var cur_pack = literal_pack_list[cur_selected];
+
+			packInfo.text = "Name: " + cur_pack.name + "\nDescription: " + cur_pack.description + "\n\nPack Version: " + cur_pack.pack_version
+				+ "\n\nPack Version Warning(s):" + ResourcePacks.getPackVersionWarning(cur_pack.pack_version);
+		}
+		else
+		{
+			packInfo.text = "N/A";
 		}
 
 		if (FlxG.keys.pressed.SHIFT)
