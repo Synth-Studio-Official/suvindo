@@ -18,7 +18,7 @@ class PlayState extends FlxState
 
 	public static var world_info:
 		{
-			?cursor_block:{x:Float, y:Float},
+			?cursor_block:{x:Float, y:Float, block_id:String},
 			?blocks:Array<Block>
 		};
 
@@ -52,6 +52,7 @@ class PlayState extends FlxState
 			if (world_info.cursor_block != null)
 			{
 				cursor_block.setPosition(world_info.cursor_block.x, world_info.cursor_block.y);
+				cursor_block.switchBlock(world_info.cursor_block.block_id);
 			}
 
 			world_info = null;
@@ -69,6 +70,7 @@ class PlayState extends FlxState
 		world_info.cursor_block = {
 			x: cursor_block.x,
 			y: cursor_block.y,
+			block_id: cursor_block.block_id,
 		}
 		if (blocks.members != null)
 			for (block in blocks.members)
