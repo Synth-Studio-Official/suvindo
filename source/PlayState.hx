@@ -1,5 +1,6 @@
 package;
 
+import flixel.text.FlxText;
 import suvindo.BlockList;
 import flixel.FlxG;
 import suvindo.Block;
@@ -11,6 +12,8 @@ class PlayState extends FlxState
 	public var blocks:FlxTypedGroup<Block>;
 
 	public var cursor_block:Block;
+
+	public var watermark:FlxText;
 
 	override public function create()
 	{
@@ -25,6 +28,9 @@ class PlayState extends FlxState
 		cursor_block.x = 16 * ((FlxG.width / 16) / 2);
 		cursor_block.y = 16 * ((FlxG.height / 16) / 2);
 		cursor_block.alpha = .5;
+
+		watermark = new FlxText(2, 2, 0, "Suvindo " + lime.app.Application.current.meta.get('version'), 8);
+		add(watermark);
 	}
 
 	override public function update(elapsed:Float)
