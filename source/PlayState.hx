@@ -89,7 +89,7 @@ class PlayState extends FlxState
 			watermark.text += "\n\nResource packs:";
 			if (ResourcePacks.RESOURCE_PACKS.length > 0)
 				for (pack in ResourcePacks.RESOURCE_PACKS)
-					watermark.text += "\n* " + pack;
+					watermark.text += "\n* " + pack + ((ResourcePacks.ENABLED_RESOURCE_PACKS.contains(pack) ? ' (enabled)' : ' (disabled)'));
 			else
 				watermark.text += "\nNone";
 		}
