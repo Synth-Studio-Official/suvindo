@@ -101,5 +101,5 @@ typedef ResourcePack =
 	var name:String;
 	var ?description:String;
 
-	var pack_version:Int;
+	var pack_version:Null<Int>;
 }
