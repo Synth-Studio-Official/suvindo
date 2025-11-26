@@ -17,6 +17,9 @@ class Block extends FlxSprite
 	{
 		loadGraphic('assets/images/blocks/' + new_block + '.png');
 
+		this.scale.set(1 * (16 / this.graphic.width), 1 * (16 / this.graphic.height));
+		this.updateHitbox();
+
 		this.block_id = new_block;
 	}
 }
