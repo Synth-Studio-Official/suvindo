@@ -33,10 +33,12 @@ class PlayState extends FlxState
 		watermark = new FlxText(2, 2, 0, "Suvindo " + lime.app.Application.current.meta.get('version'), 16);
 		add(watermark);
 
-		ReloadPlugin.reload.add(() ->
-		{
-			cursor_block.switchBlock(BlockList.BLOCK_LIST[0]);
-		});
+		ReloadPlugin.reload.add(reloadFunction);
+	}
+
+	public function reloadFunction()
+	{
+		cursor_block.switchBlock(BlockList.BLOCK_LIST[0]);
 	}
 
 	override public function update(elapsed:Float)
