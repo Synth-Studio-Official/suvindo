@@ -244,7 +244,7 @@ class PlayState extends FlxState
 
 					if (new_block?.block_json?.type == 'animated')
 					{
-						onReload();
+						FlxTimer.wait(1 / 1000, () -> onReload);
 					}
 				}
 				else
