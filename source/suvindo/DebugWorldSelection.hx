@@ -42,12 +42,12 @@ class DebugWorldSelection extends FlxState
 				world_json = Json.parse(File.getContent(save));
 				#end
 			}
-			catch (e) {}
+			catch (e) {
+				trace(e);
+			}
 
 			if (world_json != null)
-			{
 				world_list.push(Path.withoutDirectory(Path.withoutExtension(save)));
-			}
 		}
 
 		trace("world_list: " + world_list);

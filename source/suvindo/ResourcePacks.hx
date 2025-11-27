@@ -53,7 +53,10 @@ class ResourcePacks
 
 					RESOURCE_PACKS.push(pack);
 				}
-				catch (e) {}
+				catch (e)
+				{
+					trace(e);
+				}
 			}
 		}
 
@@ -148,14 +151,20 @@ class ResourcePacks
 			for (path in FileSystem.readDirectory('assets/' + directory))
 				read_directory.push('assets/' + directory + path);
 		}
-		catch (e) {}
+		catch (e)
+		{
+			trace(e);
+		}
 		for (pack in ENABLED_RESOURCE_PACKS)
 			try
 			{
 				for (path in FileSystem.readDirectory('resources/' + pack + '/' + directory))
 					read_directory.push('resources/' + pack + '/' + path);
 			}
-			catch (e) {}
+			catch (e)
+			{
+				trace(e);
+			}
 		#end
 
 		return read_directory;

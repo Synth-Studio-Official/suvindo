@@ -18,7 +18,7 @@ class Init extends FlxState
 		}
 		FlxG.plugins.addPlugin(new ReloadPlugin());
 
-		FlxTimer.wait(.1, () -> {
+		FlxTimer.wait(.5, () -> {
 			#if RESOURCE_PACK_MENU
 			FlxG.switchState(() -> new ResourcePackMenu());
 			#else
