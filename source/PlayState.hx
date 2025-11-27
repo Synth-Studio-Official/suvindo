@@ -23,10 +23,10 @@ class PlayState extends FlxState
 	public var cursor_block:Block;
 	public var watermark:FlxText;
 
-	public #if !sys static #end var world_info:
+	public static var world_info:
 		{
 			?cursor_block:{x:Float, y:Float, block_id:String},
-			?blocks:Array<Block>,
+			?blocks:Array<Dynamic>,
 			?has_animated_blocks:Bool,
 			?animated_block_universal_frames:Dynamic,
 			random_id:String,
@@ -70,7 +70,14 @@ class PlayState extends FlxState
 			{
 				for (block in world_info.blocks)
 				{
-					var old_block = new Block(block.block_id, block.x, block.y);
+					if (block?.block_id == null)
+						continue;
+					if (block?.x == null)
+						continue;
+					if (block?.y == null)
+						continue;
+
+					var old_block = new Block(block?.block_id, block?.x, block?.y);
 					if (world_info.has_animated_blocks)
 					{
 						if (Reflect.fields(world_info.animated_block_universal_frames).contains(old_block.block_id))
@@ -110,7 +117,11 @@ class PlayState extends FlxState
 		if (blocks.members != null)
 			for (block in blocks.members)
 			{
-				world_info.blocks.push(block);
+				world_info.blocks.push({
+					block_id: block.block_id,
+					x: block.x,
+					y: block.y,
+				});
 
 				if (block.block_json?.type == "animated" && !Reflect.hasField(world_info.animated_block_universal_frames, block.block_id))
 				{
