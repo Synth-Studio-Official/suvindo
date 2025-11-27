@@ -4,6 +4,7 @@
 A block with a looping animation
 
 ## JSON
+
 - `type` : "animated"
 - `animated` :
     - `block_width` : Width of your block
@@ -19,4 +20,5 @@ A block with a looping animation
 - [Water block](/assets/base/images/blocks/water.json)
 
 ## Notes
-If the .JSON file is unspecified then your texture will be squashed.
+
+- If the .JSON file is unspecified then your texture will be squashed.
