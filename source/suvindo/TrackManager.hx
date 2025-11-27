@@ -62,10 +62,10 @@ class TrackManager
 			FlxTimer.wait(FlxG.random.float(60, 60 * switch (MUSIC_RATE)
 			{
 				case OFF: Math.POSITIVE_INFINITY;
-				case CONSTANT: 0.5;
-				case FREQUENT: 5;
-				case DEFAULT: FlxG.random.int(10, 20);
-				case VARIABLE: ((FlxG.state is DebugWorldSelection) ? FlxG.random.int(0.5, 15) : FlxG.random.int(0.5, 120));
+				case CONSTANT: FlxG.random.float(0.25, 1);
+				case FREQUENT: FlxG.random.float(4, 6);
+				case DEFAULT: FlxG.random.float(10, 20);
+				case VARIABLE: ((FlxG.state is DebugWorldSelection) ? FlxG.random.float(0.5, 15) : FlxG.random.float(0.5, 120));
 			}), playTrack);
 		});
 	}
