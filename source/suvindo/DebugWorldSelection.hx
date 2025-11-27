@@ -21,6 +21,8 @@ class DebugWorldSelection extends FlxState
 
 	public var cur_selected:Int = 0;
 
+	public static var saved_selected:Int = 0;
+
 	public var world_texts:FlxTypedGroup<FlxText>;
 
 	public var camFollow:FlxObject;
@@ -31,6 +33,8 @@ class DebugWorldSelection extends FlxState
 	{
 		super.create();
 		world_list = [null];
+
+		cur_selected = saved_selected;
 
 		#if sys
 		if (FileSystem.exists('assets/saves'))
@@ -157,13 +161,24 @@ class DebugWorldSelection extends FlxState
 			{
 				#if sys
 				var count = 0;
-				while (FileSystem.exists('assets/saves/' + world_name.text + '.json'))
-				{
-					world_name.text = world_name.text.split('๑-')[0] + "๑-" + (count + 1);
-					count++;
-				}
+				if (world_list[cur_selected] == null)
+					while (FileSystem.exists('assets/saves/' + world_name.text + '.json'))
+					{
+						world_name.text = world_name.text.split('๑-')[0] + "๑-" + (count + 1);
+						count++;
+					}
 				#end
+				saved_selected = 0;
 				FlxG.switchState(() -> new PlayState((world_list[cur_selected] == null) ? world_name.text : world_list[cur_selected]));
+			}
+
+			if (FlxG.keys.justReleased.DELETE)
+			{
+				if (world_list[cur_selected] != null)
+				{
+					saved_selected = cur_selected;
+					#if sys FileSystem.deleteDirectory('assets/saves/' + world_list[cur_selected] + '.json'); #end
+				}
 			}
 		}
 	}
