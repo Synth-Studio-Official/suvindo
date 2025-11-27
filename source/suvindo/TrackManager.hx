@@ -22,6 +22,7 @@ class TrackManager
 		TRACKS_LIST = [];
 		if (MUSIC != null)
 			MUSIC.destroy();
+		trace('RELOADING');
 		#if sys
 		var tracksDir:Array<String> = ResourcePacks.readDirectory('music/');
 		for (track in RequestsManager.ADD.tracks)

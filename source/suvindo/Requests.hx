@@ -29,6 +29,7 @@ class RequestsManager
 
 	public static function reload()
 	{
+		trace('RELOADING');
 		REMOVE = {
 			blocks: [],
 			tracks: [],

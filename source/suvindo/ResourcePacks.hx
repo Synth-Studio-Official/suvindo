@@ -20,6 +20,7 @@ class ResourcePacks
 		RESOURCE_PACKS = [];
 		ENABLED_RESOURCE_PACKS = [];
 		var enabled_resource_list:String = '';
+		trace('RELOADING');
 
 		#if sys
 		for (pack in FileSystem.readDirectory('resources/'))

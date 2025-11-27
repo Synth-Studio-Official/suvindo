@@ -18,6 +18,7 @@ class BlockList
 	public static function reload()
 	{
 		BLOCK_LIST = [];
+		trace('RELOADING');
 
 		#if sys
 		var blocksDir:Array<String> = ResourcePacks.readDirectory('images/blocks/');
