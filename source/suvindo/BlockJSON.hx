@@ -2,18 +2,31 @@ package suvindo;
 
 typedef BlockJSON =
 {
-	> VariationsEntry,
+	var ?variations:Array<BlockVariation>;
+	var ?animated:AnimatedEntry;
 
 	var ?type:String;
 }
 
-typedef VariationsEntry =
+typedef BlockTexture =
 {
-	var ?variations:Array<BlockVariation>;
+	texture:String
 }
 
 typedef BlockVariation =
 {
+	> BlockTexture,
+
 	id:String,
-	texture:String
+}
+
+typedef AnimatedEntry =
+{
+	> BlockTexture,
+
+	block_width:Int,
+	block_height:Int,
+
+	?frames:Array<Int>,
+	?fps:Int
 }
