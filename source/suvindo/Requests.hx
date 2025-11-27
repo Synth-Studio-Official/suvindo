@@ -40,7 +40,7 @@ class RequestsManager
 		};
 
 		#if sys
-		for (request in ResourcePacks.readDirectory('data/requests/'))
+		for (request in ResourcePacks.readDirectory('data/requests'))
 		{
 			var parsed_request:Request = null;
 			try
