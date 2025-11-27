@@ -91,8 +91,9 @@ class PlayState extends FlxState
 				{
 					world_info.has_animated_blocks = true;
 					Reflect.setField(world_info.animated_block_universal_frames, block.block_id,
-						block.animation.frameIndex + ((FlxG.random.bool((block.animation.frameIndex / block.animation.numFrames) * 100)
-							&& block.animation.frameIndex / block.animation.numFrames != 1) ? 1 : 0));
+						block.animation.frameIndex +
+						((FlxG.random.bool((block.animation.frameIndex / block.animation.numFrames) * 100)) ? ((block.animation.frameIndex / block.animation.numFrames == 1) ? block.animation.curAnim.frames[0]
+							- block.animation.frameIndex : 1) : 0));
 				}
 			}
 	}
