@@ -1,4 +1,5 @@
 dirt
 grass_block
+leaves
 plank
 stone
