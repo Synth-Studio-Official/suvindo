@@ -101,7 +101,7 @@ class DebugWorldSelection extends FlxState
 
 		ReloadPlugin.canReload = !world_name.hasFocus;
 
-		worldInfo.text = 'N/A';
+		worldInfo.text = '';
 		for (world_text in world_texts)
 		{
 			world_text.y = 2 + ((world_text.size * 4) * world_text.ID);
@@ -110,17 +110,19 @@ class DebugWorldSelection extends FlxState
 			if (world_text.ID == cur_selected)
 			{
 				camFollow.y = world_text.y;
+				if (world_list[cur_selected] != null)
+				{
+					var cur_world:WorldInfo = Json.parse(File.getContent('assets/saves/' + world_list[cur_selected]));
 
-				var cur_world:WorldInfo = Json.parse(File.getContent('assets/saves/' + world_list[cur_selected]));
-
-				worldInfo.text = 'Name: '
-					+ cur_world.world_name
-					+ '\nRID: '
-					+ cur_world.random_id
-					+ '\n\nGame Version: '
-					+ cur_world.game_version
-					+ '\n\nGame Version Warning(s):\n'
-					+ WorldInfoClass.getGameVersionWarnings(cur_world.game_version);
+					worldInfo.text = 'Name: '
+						+ cur_world.world_name
+						+ '\nRID: '
+						+ cur_world.random_id
+						+ '\n\nGame Version: '
+						+ cur_world.game_version
+						+ '\n\nGame Version Warning(s):\n'
+						+ WorldInfoClass.getGameVersionWarnings(cur_world.game_version);
+				}
 			}
 		}
 
