@@ -1,5 +1,9 @@
 package suvindo;
 
+#if sys
+import sys.io.File;
+#end
+import lime.utils.Assets;
 import openfl.display.BitmapData;
 import flixel.graphics.FlxGraphic;
 import funkin.graphics.shaders.HSVShader;
@@ -28,6 +32,16 @@ class Block extends FlxSprite
 		#else
 		loadGraphic(ResourcePacks.getPath('images/blocks/' + new_block + '.png'));
 		#end
+
+		#if sys
+		var block_json:BlockJSON = cast File.getContent(ResourcePacks.getPath('images/blocks/' + new_block + '.json'));
+		#else
+		var block_json:BlockJSON = cast Assets.getText(ResourcePacks.getPath('images/blocks/' + new_block + '.json'));
+		#end
+		if (block_json != null)
+		{
+			if (block_json.type != null) {}
+		}
 
 		if (this.graphic != null)
 			this.scale.set(1 * (16 / this.graphic.width), 1 * (16 / this.graphic.height));
