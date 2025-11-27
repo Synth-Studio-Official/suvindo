@@ -1,5 +1,6 @@
 package suvindo;
 
+import haxe.Json;
 import sys.io.File;
 import lime.utils.Assets;
 import haxe.io.Path;
@@ -20,18 +21,21 @@ class BlockList
 		#if sys
 		for (image in ResourcePacks.readDirectory('images/blocks/'))
 		{
-			trace(image);
+			var list_entry:String = Path.withoutExtension(Path.withoutDirectory(image));
+
 			if (image.endsWith('.png') && !FileSystem.isDirectory(image))
-				if (!BLOCK_LIST.contains(Path.withoutExtension(Path.withoutDirectory(image))))
-					BLOCK_LIST.push(Path.withoutExtension(Path.withoutDirectory(image)));
+				if (!BLOCK_LIST.contains(list_entry))
+					BLOCK_LIST.push(list_entry);
 
 			if (image.endsWith('.json') && !FileSystem.isDirectory(image))
 			{
-				var block_json:BlockJSON = cast File.getContent(image);
+				var block_json:BlockJSON = cast Json.parse(File.getContent(image));
+				trace(block_json.type);
+				trace(block_json.variations);
 				if (block_json != null)
 					if (block_json.type != null)
-						if (!BLOCK_LIST.contains(Path.withoutExtension(Path.withoutDirectory(image))))
-							BLOCK_LIST.push(Path.withoutExtension(Path.withoutDirectory(image)));
+						if (!BLOCK_LIST.contains(list_entry))
+							BLOCK_LIST.push(list_entry);
 			}
 		}
 		#else

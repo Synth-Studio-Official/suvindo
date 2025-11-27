@@ -1,5 +1,6 @@
 package suvindo;
 
+import haxe.Json;
 #if sys
 import sys.FileSystem;
 import sys.io.File;
@@ -42,9 +43,9 @@ class Block extends FlxSprite
 		if (#if !sys Assets.exists #else FileSystem.exists #end (ResourcePacks.getPath('images/blocks/' + new_block + '.json')))
 		{
 			#if sys
-			block_json = cast File.getContent(ResourcePacks.getPath('images/blocks/' + new_block + '.json'));
+			block_json = cast Json.parse(File.getContent(ResourcePacks.getPath('images/blocks/' + new_block + '.json')));
 			#else
-			block_json = cast Assets.getText(ResourcePacks.getPath('images/blocks/' + new_block + '.json'));
+			block_json = cast Json.parse(Assets.getText(ResourcePacks.getPath('images/blocks/' + new_block + '.json')));
 			#end
 			if (block_json != null)
 			{
