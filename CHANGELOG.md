@@ -1,4 +1,4 @@
-# 0.2.0
+# 0.2.0 - 11/??/2025
 ## General
 - Changed company from "Sphis" to "SuvindoCrew"
 - [DEBUG] Added " [PROTOTYPE]" text to watermark
@@ -27,5 +27,5 @@
         - `white`
         - `black`
 
-# 0.1.0
+# 0.1.0 - 11/26/2025
 Early prototype version of Suvindo.
