@@ -1,5 +1,7 @@
 # 0.2.0 - 11/??/2025
 ## General
+- Added Current Block Variation to the watermark
+- "Current Block (id)" is now "Current Block ID" on the watermark
 - Changed company from "Sphis" to "SuvindoCrew"
 - [DEBUG] Added " [PROTOTYPE]" text to watermark
 - Added extra linebreak inbetween the "Current Block (id)" and "Resource packs" text in watermarks
@@ -10,7 +12,7 @@
     - Types:
         - "Variations" - Allows the block to change its texture without switching to (or having to create) a new block
     - [TYPE: "Variations"] Variations - An array of variations the block has with the following fields for each variation
-        - "id" - Name of the variation
+        - "id" - Name of the variation, used in the watermark
         - "texture" - path of the texture you'd like to use relative to the images folder, so if your texture is in `assets/images/mycoolblock/coolstate5.png`, then you'd put `mycoolblock/coolstate5`
 - Added Wool Block
     - Type: "Variations"

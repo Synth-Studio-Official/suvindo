@@ -52,6 +52,9 @@ WASD / Arrow Keys - Move the cursor block
 TAB - Switch to the next block
 TAB + SHIFT - Switch to the previous block
 
+L - Switch to the next variation
+L + SHIFT - Switch to the previous variation
+
 F3 - Display extra info on the watermark
 
 ENTER - Place / Break blocks (depending on if you're touching a block)

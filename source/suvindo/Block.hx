@@ -18,7 +18,7 @@ class Block extends FlxSprite
 	public var block_json:BlockJSON;
 
 	public var variation_index:Int = 0;
-	public var variation_graphics:Array<FlxGraphicAsset> = [];
+	public var variation_graphics:Array<{id:String, graphic:FlxGraphicAsset}> = [];
 
 	public var hsv_shader:HSVShader;
 
@@ -49,8 +49,8 @@ class Block extends FlxSprite
 			variation_index = 0;
 		if (variation_index > variation_graphics.length - 1)
 			variation_index = variation_graphics.length - 1;
-		
-		loadGraphic(variation_graphics[variation_index]);
+
+		loadGraphic(variation_graphics[variation_index].graphic);
 	}
 
 	public function switchBlock(new_block:String)
@@ -68,7 +68,8 @@ class Block extends FlxSprite
 			#end
 			if (block_json != null && block_json.type != null)
 			{
-				switch (block_json.type.toLowerCase())
+				block_json.type = block_json.type.toLowerCase();
+				switch (block_json.type)
 				{
 					case 'variations':
 						for (variation in block_json.variations)
@@ -80,7 +81,7 @@ class Block extends FlxSprite
 							var variation_graphic:FlxGraphicAsset = ResourcePacks.getPath('images/' + variation.texture + '.png');
 							#end
 
-							variation_graphics.push(variation_graphic);
+							variation_graphics.push({id: variation.id, graphic: variation_graphic});
 						}
 
 						changeVariationIndex(0);
