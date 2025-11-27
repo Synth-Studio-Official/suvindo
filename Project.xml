@@ -43,6 +43,8 @@
 	<assets path="resources"/>
 	<assets path=".dev/debug-resources" rename="resources" if="debug"/>
 
+	<assets path="README.md" rename="README.txt"/>
+
 	<!-- _______________________________ Libraries ______________________________ -->
 
 	<haxelib name="flixel" />
