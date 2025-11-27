@@ -182,7 +182,7 @@ class PlayState extends FlxState
 
 			if (FlxG.keys.justReleased.L)
 			{
-				if (cursor_block.block_json.type == "variations")
+				if (cursor_block.block_json?.type == "variations")
 					cursor_block.changeVariationIndex((FlxG.keys.pressed.SHIFT) ? -1 : 1);
 			}
 		}
