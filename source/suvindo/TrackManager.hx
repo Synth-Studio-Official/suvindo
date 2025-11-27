@@ -1,5 +1,6 @@
 package suvindo;
 
+import lime.utils.Assets;
 import flixel.math.FlxMath;
 import flixel.sound.FlxSound;
 import flixel.util.FlxTimer;
@@ -71,10 +72,17 @@ class TrackManager
 		if (MUSIC_RATE == OFF)
 			return;
 
-		if (TRACKS_LIST.length < 1)
+		if (TRACKS_LIST.length == 0)
 			return;
 
 		var track = ResourcePacks.getPath('music/' + TRACKS_LIST[FlxG.random.int(0, TRACKS_LIST.length - 1)] + '.wav');
+
+		#if sys
+		if (!FileSystem.exists(track))
+		#else
+		if (!Assets.exists(track))
+		#end
+		return;
 
 		if (MUSIC == null)
 			MUSIC = new FlxSound();
