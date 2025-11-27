@@ -1,16 +1,15 @@
 package suvindo;
 
-import sys.FileSystem;
 import flixel.text.FlxInputText;
 import haxe.io.Path;
 import flixel.FlxObject;
 import flixel.FlxG;
 import flixel.util.FlxColor;
 #if sys
+import sys.FileSystem;
 import sys.io.File;
 #end
 import haxe.Json;
-import suvindo.ResourcePacks.ResourcePack;
 import flixel.text.FlxText;
 import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.FlxState;
@@ -32,23 +31,27 @@ class DebugWorldSelection extends FlxState
 		super.create();
 		world_list = [null];
 
-		for (save in #if sys FileSystem.readDirectory('assets/saves/') #else [] #end)
-		{
-			var world_json:Dynamic = null;
-
-			try
+		#if sys
+		if (FileSystem.exists('assets/saves/'))
+			for (save in FileSystem.readDirectory('assets/saves/'))
 			{
-				#if sys
-				world_json = Json.parse(File.getContent(save));
-				#end
-			}
-			catch (e) {
-				trace(e);
-			}
+				var world_json:Dynamic = null;
 
-			if (world_json != null)
-				world_list.push(Path.withoutDirectory(Path.withoutExtension(save)));
-		}
+				try
+				{
+					#if sys
+					world_json = Json.parse(File.getContent(save));
+					#end
+				}
+				catch (e)
+				{
+					trace(e);
+				}
+
+				if (world_json != null)
+					world_list.push(Path.withoutDirectory(Path.withoutExtension(save)));
+			}
+		#end
 
 		trace("world_list: " + world_list);
 
