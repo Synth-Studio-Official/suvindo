@@ -1,5 +1,6 @@
 package suvindo;
 
+import flixel.math.FlxMath;
 import flixel.sound.FlxSound;
 import flixel.util.FlxTimer;
 import flixel.FlxG;
@@ -50,10 +51,18 @@ class TrackManager
 
 	public static var MUSIC_RATE:MusicRate = DEFAULT;
 
+	public static var MUSIC_TIMER:FlxTimer;
+
 	public static function playTrack()
 	{
 		if (FlxG.sound.music?.playing)
 			return;
+
+		if (MUSIC_TIMER?.active)
+		{
+			trace(FlxMath.roundDecimal(MUSIC_TIMER.timeLeft / 60, 2) + " minutes left");
+			return;
+		}
 
 		if (MUSIC_RATE == OFF)
 			return;
@@ -62,21 +71,35 @@ class TrackManager
 			return;
 
 		var track = ResourcePacks.getPath('music/' + TRACKS_LIST[FlxG.random.int(0, TRACKS_LIST.length - 1)] + '.wav');
-		trace('playing ' + track);
 
 		if (FlxG.sound.music == null)
 			FlxG.sound.music = new FlxSound();
+
+		final max_wait_secs:Float = 60 * switch (MUSIC_RATE)
+		{
+			case OFF: Math.POSITIVE_INFINITY;
+			case CONSTANT: FlxG.random.float(0.25, 1);
+			case FREQUENT: FlxG.random.float(4, 6);
+			case DEFAULT: FlxG.random.float(10, 20);
+			case VARIABLE: ((FlxG.state is DebugWorldSelection) ? FlxG.random.float(0.5, 15) : FlxG.random.float(0.5, 120));
+		};
+		trace('MUSIC RATE : ' + MUSIC_RATE);
+
+		final time_to_wait = FlxG.random.float(60, max_wait_secs);
+
+		if (MUSIC_TIMER == null)
+			MUSIC_TIMER = new FlxTimer();
+
+		trace('Going to wait ' + FlxMath.roundDecimal(time_to_wait / 60, 2) + " minutes to play next track");
+
 		FlxG.sound.music.loadStream(track, false, false, () ->
 		{
-			FlxTimer.wait(FlxG.random.float(60, 60 * switch (MUSIC_RATE)
+			trace('Waiting ' + FlxMath.roundDecimal(time_to_wait / 60, 2) + " minutes to play next track");
+			MUSIC_TIMER.start(time_to_wait, t -> playTrack);
+		}, () ->
 			{
-				case OFF: Math.POSITIVE_INFINITY;
-				case CONSTANT: FlxG.random.float(0.25, 1);
-				case FREQUENT: FlxG.random.float(4, 6);
-				case DEFAULT: FlxG.random.float(10, 20);
-				case VARIABLE: ((FlxG.state is DebugWorldSelection) ? FlxG.random.float(0.5, 15) : FlxG.random.float(0.5, 120));
-			}), playTrack);
-		});
+				trace('playing ' + track);
+			});
 		FlxG.sound.music.play();
 	}
 }
