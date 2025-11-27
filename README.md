@@ -64,6 +64,8 @@ Surely you're not just here to check out the code right?
 
 `WORLD SELECTION MENU` : ENTER - Select the current world (or make a new world)
 
+`WORLD SELECTION MENU` : DELETE - Delete the currently selected world
+
 ## Playing the Game : Resource Packs
 
 See the docs on the resource packs [here](/.dev/docs/resourcepacks/Intro.md).
