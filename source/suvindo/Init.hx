@@ -1,5 +1,6 @@
 package suvindo;
 
+import suvindo.Requests.RequestsManager;
 import flixel.util.FlxTimer;
 import flixel.FlxG;
 import flixel.FlxState;
@@ -14,6 +15,7 @@ class Init extends FlxState
 		ReloadPlugin.onReloadInit = () ->
 		{
 			ReloadPlugin.reload.add(ResourcePacks.reload);
+			ReloadPlugin.reload.add(RequestsManager.reload);
 			ReloadPlugin.reload.add(BlockList.reload);
 		}
 		FlxG.plugins.addPlugin(new ReloadPlugin());

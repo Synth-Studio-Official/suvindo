@@ -1,5 +1,6 @@
 package suvindo;
 
+import suvindo.Requests.RequestsManager;
 import haxe.Json;
 import sys.io.File;
 import lime.utils.Assets;
@@ -27,6 +28,9 @@ class BlockList
 				if (!BLOCK_LIST.contains(list_entry))
 					BLOCK_LIST.push(list_entry);
 			}
+
+			if (RequestsManager.REMOVE.blocks.contains(list_entry))
+				continue;
 
 			if (image.endsWith('.png') && !FileSystem.isDirectory(image) && !FileSystem.exists(image.replace('png', '.json')))
 				accept_entry();
