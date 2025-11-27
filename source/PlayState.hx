@@ -101,6 +101,8 @@ class PlayState extends FlxState
 						continue;
 					if (RequestsManager.REMOVE.blocks.contains(block?.block_id))
 						continue;
+					if (!BlockList.BLOCK_LIST.contains(block?.block_id))
+						continue;
 
 					var old_block = new Block(block?.block_id, block?.x, block?.y);
 					if (world_info.has_animated_blocks)
