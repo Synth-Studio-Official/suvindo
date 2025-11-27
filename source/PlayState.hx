@@ -1,5 +1,6 @@
 package;
 
+import lime.app.Application;
 import lime.utils.Assets;
 import haxe.Json;
 import haxe.crypto.Sha256;
@@ -31,6 +32,7 @@ class PlayState extends FlxState
 			?animated_block_universal_frames:Dynamic,
 			random_id:String,
 			// world_name:String,
+			game_version:String,
 		};
 
 	override public function new(?world:String = null)
@@ -107,7 +109,8 @@ class PlayState extends FlxState
 			has_animated_blocks: false,
 			animated_block_universal_frames: {},
 			random_id: (world_info?.random_id ?? null) ?? Sha256.encode('' + FlxG.random.int(0, 255)),
-			// world_name: world_info.world_name ?? null
+			// world_name: world_info.world_name ?? null,
+			game_version: Application.current.meta.get('version')
 		};
 		world_info.cursor_block = {
 			x: cursor_block.x,
