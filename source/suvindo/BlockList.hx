@@ -20,6 +20,7 @@ class BlockList
 		#if sys
 		for (image in ResourcePacks.readDirectory('images/blocks/'))
 		{
+			trace(image);
 			if (image.endsWith('.png') && !FileSystem.isDirectory(image))
 				if (!BLOCK_LIST.contains(Path.withoutExtension(Path.withoutDirectory(image))))
 					BLOCK_LIST.push(Path.withoutExtension(Path.withoutDirectory(image)));
