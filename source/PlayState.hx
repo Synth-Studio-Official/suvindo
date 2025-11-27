@@ -1,5 +1,11 @@
 package;
 
+import haxe.Json;
+import haxe.crypto.Sha256;
+import sys.io.File;
+#if sys
+import sys.FileSystem;
+#end
 import suvindo.ResourcePackMenu;
 import suvindo.ResourcePacks;
 import suvindo.ReloadPlugin;
@@ -21,7 +27,8 @@ class PlayState extends FlxState
 			?cursor_block:{x:Float, y:Float, block_id:String},
 			?blocks:Array<Block>,
 			?has_animated_blocks:Bool,
-			?animated_block_universal_frames:Dynamic
+			?animated_block_universal_frames:Dynamic,
+			random_id:String
 		};
 
 	override public function create()
@@ -75,7 +82,8 @@ class PlayState extends FlxState
 			cursor_block: null,
 			blocks: [],
 			has_animated_blocks: false,
-			animated_block_universal_frames: {}
+			animated_block_universal_frames: {},
+			random_id: Sha256.encode('' + FlxG.random.int(0, 255))
 		};
 		world_info.cursor_block = {
 			x: cursor_block.x,
@@ -96,6 +104,13 @@ class PlayState extends FlxState
 							- block.animation.frameIndex : 1) : 0));
 				}
 			}
+
+		#if sys
+		if (!FileSystem.exists('assets/saves'))
+			FileSystem.createDirectory('assets/saves');
+		
+		File.saveContent('assets/saves/world_' + world_info.random_id+'.json', Json.stringify(world_info, "\t"));
+		#end
 	}
 
 	public function onReload()
