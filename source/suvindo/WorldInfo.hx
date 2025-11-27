@@ -2,6 +2,8 @@ package suvindo;
 
 import sphis.any.VersionConverts;
 
+using StringTools;
+
 typedef WorldInfo =
 {
 	?cursor_block:{x:Float, y:Float, block_id:String},
@@ -34,6 +36,9 @@ class WorldInfoClass
 
 		if (version_single_int > VersionConverts.convertToInt(MIN_WORLD_VERSION))
 			add_warning('Above the maximum supported world version');
+
+        if (game_version.toLowerCase().contains(' [prototype]'))
+			add_warning('Prototype version!');
 
 		if (warning == '')
 			warning = 'None';
