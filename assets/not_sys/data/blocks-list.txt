@@ -3,3 +3,4 @@ grass_block
 leaves
 plank
 stone
+tree_trunk
