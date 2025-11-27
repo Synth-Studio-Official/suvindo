@@ -102,11 +102,19 @@
 	<!-- _________________________________ Custom _______________________________ -->
 
 	<!--Place custom nodes like icons here-->
-	<icon path="assets/icons/16x.png"/>
-	<icon path="assets/icons/16x.png" size="16"/>
-	<icon path="assets/icons/24x.png" size="24"/>
-	<icon path="assets/icons/32x.png" size="32"/>
-	<icon path="assets/icons/40x.png" size="40"/>
-	<icon path="assets/icons/48x.png" size="48"/>
-	<icon path="assets/icons/64x.png" size="64"/>
+	<icon path="assets/icons/16x.png" unless="debug"/>
+	<icon path="assets/icons/16x.png" unless="debug" size="16"/>
+	<icon path="assets/icons/24x.png" unless="debug" size="24"/>
+	<icon path="assets/icons/32x.png" unless="debug" size="32"/>
+	<icon path="assets/icons/40x.png" unless="debug" size="40"/>
+	<icon path="assets/icons/48x.png" unless="debug" size="48"/>
+	<icon path="assets/icons/64x.png" unless="debug" size="64"/>
+
+	<icon path="assets/icons/16x-debug.png" if="debug"/>
+	<icon path="assets/icons/16x-debug.png" if="debug" size="16"/>
+	<icon path="assets/icons/24x-debug.png" if="debug" size="24"/>
+	<icon path="assets/icons/32x-debug.png" if="debug" size="32"/>
+	<icon path="assets/icons/40x-debug.png" if="debug" size="40"/>
+	<icon path="assets/icons/48x-debug.png" if="debug" size="48"/>
+	<icon path="assets/icons/64x-debug.png" if="debug" size="64"/>
 </project>
