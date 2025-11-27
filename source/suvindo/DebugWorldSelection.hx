@@ -114,7 +114,7 @@ class DebugWorldSelection extends FlxState
 			{
 				#if sys
 				while (FileSystem.exists('assets/saves/' + world_name.text + '.json'))
-					world_name.text += '๑_';
+					world_name.text += '_๑';
 				#end
 				FlxG.switchState(() -> new PlayState(world_list[cur_selected] ?? world_name.text));
 			}

@@ -2,10 +2,10 @@
 ## General
 - Fixed mouse being visible when it shouldn't be
 - Added autosaving (every minute)
-- Added support for Loading worlds (Debug world selection state does this)
+- Added support for Loading worlds (World Selection State does this)
 - Added support for Saving worlds (auto-done when reloading or leaving gameplay)
 - [DEBUG] Added Custom Debug Application icon
-- [CODE] Added Debug world selection state
+- Added World Selection State
 - Fixed crashes when trying to read non-existant resource pack directories
 - Added Current Block Variation to the watermark
 - "Current Block (id)" is now "Current Block ID" on the watermark
