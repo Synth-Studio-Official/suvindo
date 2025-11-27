@@ -9,6 +9,7 @@ Changes connected to [the new Requests system](#requests) and the new tracks sys
     - Version `1` is still supported
 
 ## General
+- Fixed becoming off-grid by going to the bottom of the worlds
 - Added support for music tracks to play in the background randomly
 - Changed Resource Pack Menu Pack Info text size from 32 to 16
 - Fixed Resource Pack Menu warnings not displaying

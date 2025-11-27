@@ -242,8 +242,8 @@ class PlayState extends FlxState
 
 			if (cursor_block.y < 0)
 				cursor_block.y = 0;
-			if (cursor_block.y > FlxG.height - cursor_block.height)
-				cursor_block.y = FlxG.height - cursor_block.height;
+			if (cursor_block.y > FlxG.height - cursor_block.height / 2)
+				cursor_block.y = FlxG.height - cursor_block.height / 2;
 
 			var touching_kids:Bool = false; // thank god
 
