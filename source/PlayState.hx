@@ -91,12 +91,12 @@ class PlayState extends FlxState
 	{
 		super.update(elapsed);
 
-		watermark.text = 'Suvindo ' + lime.app.Application.current.meta.get('version');
+		watermark.text = 'Suvindo ' + lime.app.Application.current.meta.get('version') + #if debug ' [PROTOTYPE]' #else '' #end;
 		watermark.text += '\n\nCurrent Block (id): ' + cursor_block.block_id;
 
 		if (FlxG.keys.pressed.F3)
 		{
-			watermark.text += '\nResource packs:';
+			watermark.text += '\n\nResource packs:';
 			if (ResourcePacks.RESOURCE_PACKS.length > 0)
 				for (pack in ResourcePacks.RESOURCE_PACKS)
 					watermark.text += '\n* ' + pack + ((ResourcePacks.ENABLED_RESOURCE_PACKS.contains(pack) ? ' (enabled)' : ' (disabled)'));
