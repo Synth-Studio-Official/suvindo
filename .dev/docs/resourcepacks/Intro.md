@@ -5,6 +5,10 @@ As of writing this (0.2.0 indev) the system is still bare-bones.
 
 ## Sections
 
-- [Regular Blocks](./blocks/regular.md)
-- [Animated Blocks](./blocks/animated.md)
-- [Variation Blocks](./blocks/variation.md)
+### Blocks
+
+- [Regular Blocks](./blocks/types/regular.md)
+- [Animated Blocks](./blocks/types/animated.md)
+- [Variation Blocks](./blocks/types/variation.md)
+
+- [Removing Blocks](./blocks/actions/removing.md)
