@@ -1,6 +1,10 @@
 # Suvindo
 A project originally intended to be a survival sandbox game similar to minecraft, now turned into a simple game where you build whatever you want with a limited palette of blocks. Unless you have some Resources Packs that add more, but that's for later.
 
+## Links
+
+Availible for play on [GAMEJOLT](https://gamejolt.com/games/suvindo/1032434)!
+
 ## Credits
 
 You do or did know there's people making this or made this right? Not some robot prompted to do every single part of it. Especally the pixel art. (At the time of writing this.) They're not good at that.
