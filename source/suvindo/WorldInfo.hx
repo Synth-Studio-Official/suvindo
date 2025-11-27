@@ -51,21 +51,6 @@ class WorldInfoClass
 		if (missing_resource_packs.length > 0)
 			add_warning('Missing resource packs: ' + missing_resource_packs);
 
-		var removed_blocks:Array<String> = [];
-		var unknown_blocks:Array<String> = [];
-		for (block in world_info.blocks)
-		{
-			if (RequestsManager.REMOVE.blocks.contains(block) && !removed_blocks.contains(block.block_id))
-				removed_blocks.push(block.block_id);
-			else if (!BlockList.BLOCK_LIST.contains(block) && !unknown_blocks.contains(block.block_id))
-				unknown_blocks.push(block.block_id);
-		}
-
-		if (removed_blocks.length > 0)
-			add_warning('Removed blocks: ' + removed_blocks);
-		if (unknown_blocks.length > 0)
-			add_warning('Unknown blocks: ' + unknown_blocks);
-
 		if (warning == '')
 			warning = 'None';
 
