@@ -44,22 +44,27 @@ class PlayState extends FlxState
 		{
 			#if sys
 			if (FileSystem.exists('assets/saves/' + world + '.json'))
+			{
 				world_info = Json.parse(File.getContent('assets/saves/' + world + '.json'));
 			#else
 			if (Assets.exists('assets/saves/' + world + '.json'))
+			{
 				world_info = Json.parse(Assets.getText('assets/saves/' + world + '.json'));
 			#end
-		else
-		{
-			WORLD_NAME = world;
-			saveWorldInfo();
-		}
-		}
 
+				WORLD_NAME = world_info.world_name;
+			}
+			else
+			{
+				WORLD_NAME = world;
+				saveWorldInfo();
+			}
+		}
 		autosave_timer = new FlxTimer().start(60 * 1, t ->
 		{
 			saveWorldInfo(true);
 		}, 0);
+		trace("World name: " + WORLD_NAME);
 	}
 
 	override public function create()
@@ -166,8 +171,11 @@ class PlayState extends FlxState
 	{
 		saveWorldInfo();
 
-		trace('RELOAD!');
-		FlxG.resetState();
+		FlxTimer.wait(.5, () ->
+		{
+			trace('RELOAD!');
+			FlxG.resetState();
+		});
 	}
 
 	override public function update(elapsed:Float)
