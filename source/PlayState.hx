@@ -51,10 +51,12 @@ class PlayState extends FlxState
 			if (Assets.exists('assets/saves/' + world + '.json'))
 				world_info = Json.parse(Assets.getText('assets/saves/' + world + '.json'));
 			#end
-			else
-			{
-				world_info.world_name = world;
-			}
+		else
+		{
+			saveWorldInfo(false);
+			world_info.world_name = world;
+			saveWorldInfo(true);
+		}
 		}
 	}
 
@@ -110,7 +112,7 @@ class PlayState extends FlxState
 		ReloadPlugin.reload.add(onReload);
 	}
 
-	public function saveWorldInfo()
+	public function saveWorldInfo(save_file:Bool = true)
 	{
 		world_info = {
 			cursor_block: null,
@@ -121,12 +123,13 @@ class PlayState extends FlxState
 			world_name: world_info?.world_name ?? null,
 			game_version: Application.current.meta.get('version')
 		};
-		world_info.cursor_block = {
-			x: cursor_block.x,
-			y: cursor_block.y,
-			block_id: cursor_block.block_id,
-		}
-		if (blocks.members != null)
+		if (cursor_block != null)
+			world_info.cursor_block = {
+				x: cursor_block.x,
+				y: cursor_block.y,
+				block_id: cursor_block.block_id,
+			}
+		if (blocks?.members != null)
 			for (block in blocks.members)
 			{
 				world_info.blocks.push({
@@ -149,7 +152,9 @@ class PlayState extends FlxState
 		if (!FileSystem.exists('assets/saves'))
 			FileSystem.createDirectory('assets/saves');
 
-		File.saveContent('assets/saves/' + ((world_info?.world_name ?? null) ?? 'world_' + world_info.random_id) + '.json', Json.stringify(world_info, '\t'));
+		if (save_file)
+			File.saveContent('assets/saves/' + ((world_info?.world_name ?? null) ?? 'world_' + world_info.random_id) + '.json',
+				Json.stringify(world_info, '\t'));
 		#end
 	}
 
