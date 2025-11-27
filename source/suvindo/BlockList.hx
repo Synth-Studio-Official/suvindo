@@ -30,8 +30,6 @@ class BlockList
 			if (image.endsWith('.json') && !FileSystem.isDirectory(image))
 			{
 				var block_json:BlockJSON = cast Json.parse(File.getContent(image));
-				trace(block_json.type);
-				trace(block_json.variations);
 				if (block_json != null)
 					if (block_json.type != null)
 						if (!BLOCK_LIST.contains(list_entry))
