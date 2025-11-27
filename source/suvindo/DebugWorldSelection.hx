@@ -148,7 +148,7 @@ class DebugWorldSelection extends FlxState
 			if (FlxG.keys.justReleased.P && ResourcePacks.RESOURCE_PACKS.length > 0)
 			{
 				saved_selected = cur_selected;
-				FlxG.switchState(() -> new ResourcePackMenu());
+				FlxG.switchState(() -> new ResourcePackMenu(true));
 			}
 
 			if (FlxG.keys.anyJustReleased([W, UP]))
