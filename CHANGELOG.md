@@ -1,4 +1,8 @@
 # 0.2.0 - 11/??/2025
+## Resource Packs
+- The resource `pack_version` is now `2`
+    - Version `1` is still supported
+
 ## General
 - You can now wrap around in the Resource Pack Menu
 - Fixed mouse being visible when it shouldn't be
