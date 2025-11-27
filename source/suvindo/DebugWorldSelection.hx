@@ -33,6 +33,8 @@ class DebugWorldSelection extends FlxState
 
 		#if sys
 		if (FileSystem.exists('assets/saves'))
+		{
+			trace(FileSystem.readDirectory('assets/saves'));
 			for (save in FileSystem.readDirectory('assets/saves'))
 			{
 				var world_json:Dynamic = null;
@@ -40,7 +42,7 @@ class DebugWorldSelection extends FlxState
 				try
 				{
 					#if sys
-					world_json = Json.parse(File.getContent(save));
+					world_json = Json.parse(File.getContent('assets/saves/' + save));
 					#end
 				}
 				catch (e)
@@ -51,6 +53,7 @@ class DebugWorldSelection extends FlxState
 				if (world_json != null)
 					world_list.push(Path.withoutDirectory(Path.withoutExtension(save)));
 			}
+		}
 		#end
 
 		trace("world_list: " + world_list);
