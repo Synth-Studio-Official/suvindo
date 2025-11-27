@@ -66,7 +66,7 @@ Surely you're not just here to check out the code right?
 
 ### Resource Packs
 
-Being reworked, not the system, the documentation.
+See the docs on the resource packs [here](/.dev/docs/resourcepacks/Intro.md).
 
 ## Source code
 
