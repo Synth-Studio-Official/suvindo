@@ -17,7 +17,6 @@ class Init extends FlxState
 			ReloadPlugin.reload.add(BlockList.reload);
 		}
 		FlxG.plugins.addPlugin(new ReloadPlugin());
-		ReloadPlugin.reload.dispatch();
 
 		FlxTimer.wait(.1, () -> {
 			#if RESOURCE_PACK_MENU

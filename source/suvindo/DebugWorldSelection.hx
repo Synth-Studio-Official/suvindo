@@ -32,7 +32,7 @@ class DebugWorldSelection extends FlxState
 		super.create();
 		world_list = [null];
 
-		for (save in ResourcePacks.readDirectory('saves/'))
+		for (save in #if sys FileSystem.readDirectory('assets/saves/') #else [] #end)
 		{
 			var world_json:Dynamic = null;
 
