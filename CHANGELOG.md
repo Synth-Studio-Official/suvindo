@@ -18,7 +18,7 @@ Changes connected to [the new Requests system](#requests) and the new tracks sys
     - Fixed crashes when trying to read non-existant resource pack directories
 - You can now wrap around in the Resource Pack Menu
 - Fixed mouse being visible when it shouldn't be
-- Added autosaving (every minute)
+- Added world autosaving (every minute)
 - Added support for Loading worlds (World Selection State does this)
 - Added support for Saving worlds (auto-done when reloading or leaving gameplay)
 - `DEBUG` : Added Custom Debug Application icon
