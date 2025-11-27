@@ -29,7 +29,8 @@ class Block extends FlxSprite
 		loadGraphic(ResourcePacks.getPath('images/blocks/' + new_block + '.png'));
 		#end
 
-		this.scale.set(1 * (16 / this.graphic.width), 1 * (16 / this.graphic.height));
+		if (this.graphic != null)
+			this.scale.set(1 * (16 / this.graphic.width), 1 * (16 / this.graphic.height));
 		this.updateHitbox();
 
 		this.block_id = new_block;
