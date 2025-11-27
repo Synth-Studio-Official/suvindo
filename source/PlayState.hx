@@ -45,10 +45,16 @@ class PlayState extends FlxState
 		if (world != null)
 		{
 			#if sys
-			world_info = Json.parse(File.getContent('assets/saves/' + world + '.json'));
+			if (FileSystem.exists('assets/saves/' + world + '.json'))
+				world_info = Json.parse(File.getContent('assets/saves/' + world + '.json'));
 			#else
-			world_info = Json.parse(Assets.getText('assets/saves/' + world + '.json'));
+			if (Assets.exists('assets/saves/' + world + '.json'))
+				world_info = Json.parse(Assets.getText('assets/saves/' + world + '.json'));
 			#end
+			else
+			{
+				world_info.world_name = world;
+			}
 		}
 	}
 

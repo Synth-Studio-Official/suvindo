@@ -1,5 +1,6 @@
 package suvindo;
 
+import flixel.text.FlxInputText;
 import haxe.io.Path;
 import flixel.FlxObject;
 import flixel.FlxG;
@@ -23,6 +24,8 @@ class DebugWorldSelection extends FlxState
 
 	public var camFollow:FlxObject;
 
+	public var world_name:FlxInputText;
+
 	override function create()
 	{
 		super.create();
@@ -42,7 +45,7 @@ class DebugWorldSelection extends FlxState
 
 			if (world_json != null)
 			{
-				world_list.push(world_json.world_name ?? Path.withoutDirectory(Path.withoutExtension(save)));
+				world_list.push(Path.withoutDirectory(Path.withoutExtension(save)));
 			}
 		}
 
@@ -54,7 +57,7 @@ class DebugWorldSelection extends FlxState
 		var i = 0;
 		for (world_id in world_list)
 		{
-			var world_txt:FlxText = new FlxText(2, 2, 0, world_id ?? "New world", 32);
+			var world_txt:FlxText = new FlxText(2, 2, FlxG.width / 2, world_id ?? "New world", 32);
 			world_texts.add(world_txt);
 			world_txt.ID = i;
 
@@ -68,6 +71,10 @@ class DebugWorldSelection extends FlxState
 
 		camFollow = new FlxObject(FlxG.width / 2);
 		add(camFollow);
+
+		world_name = FlxInputTextUtil.createInputText(null, "World Name");
+		world_name.scrollFactor.set();
+		add(world_name);
 
 		FlxG.camera.follow(camFollow, LOCKON, .1);
 	}
@@ -100,7 +107,7 @@ class DebugWorldSelection extends FlxState
 
 		if (FlxG.keys.justReleased.ENTER)
 		{
-			FlxG.switchState(() -> new PlayState(world_list[cur_selected]));
+			FlxG.switchState(() -> new PlayState(world_list[cur_selected] ?? world_name.text));
 		}
 	}
 }
