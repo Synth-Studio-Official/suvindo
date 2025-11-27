@@ -1,5 +1,6 @@
 package suvindo;
 
+import suvindo.BlockJSON.BlockVariation;
 import flixel.system.FlxAssets.FlxGraphicAsset;
 import haxe.Json;
 #if sys
@@ -18,7 +19,7 @@ class Block extends FlxSprite
 	public var block_json:BlockJSON;
 
 	public var variation_index:Int = 0;
-	public var variation_graphics:Array<{id:String, graphic:FlxGraphicAsset}> = [];
+	public var variation_graphics:Array<BlockVariation> = [];
 
 	public var hsv_shader:HSVShader;
 
@@ -50,7 +51,11 @@ class Block extends FlxSprite
 		if (variation_index > variation_graphics.length - 1)
 			variation_index = 0;
 
-		loadGraphic(variation_graphics[variation_index].graphic);
+		#if sys
+		loadGraphic(FlxGraphic.fromBitmapData(BitmapData.fromFile(ResourcePacks.getPath('images/' + variation_graphics[variation_index].texture + '.png'))));
+		#else
+		loadGraphic(ResourcePacks.getPath('images/' + variation_graphics[variation_index].texture + '.png'));
+		#end
 	}
 
 	public function switchBlock(new_block:String)
@@ -81,7 +86,7 @@ class Block extends FlxSprite
 							var variation_graphic:FlxGraphicAsset = ResourcePacks.getPath('images/' + variation.texture + '.png');
 							#end
 
-							variation_graphics.push({id: variation.id, graphic: variation_graphic});
+							variation_graphics.push(variation);
 						}
 
 						changeVariationIndex(0);

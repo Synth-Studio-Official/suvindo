@@ -9,9 +9,11 @@ typedef BlockJSON =
 
 typedef VariationsEntry =
 {
-	var ?variations:Array<
-		{
-			id:String,
-			texture:String
-		}>;
+	var ?variations:Array<BlockVariation>;
+}
+
+typedef BlockVariation =
+{
+	id:String,
+	texture:String
 }
