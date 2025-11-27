@@ -46,6 +46,8 @@ class DebugWorldSelection extends FlxState
 			}
 		}
 
+		trace("world_list: " + world_list);
+
 		world_texts = new FlxTypedGroup<FlxText>();
 		add(world_texts);
 
