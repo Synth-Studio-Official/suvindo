@@ -46,9 +46,9 @@ class Block extends FlxSprite
 		variation_index += amount;
 
 		if (variation_index < 0)
-			variation_index = 0;
-		if (variation_index > variation_graphics.length - 1)
 			variation_index = variation_graphics.length - 1;
+		if (variation_index > variation_graphics.length - 1)
+			variation_index = 0;
 
 		loadGraphic(variation_graphics[variation_index].graphic);
 	}
