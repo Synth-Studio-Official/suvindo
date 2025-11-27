@@ -1,5 +1,5 @@
 # Resource Packs : Animated Blocks
-[Back](../Intro.md)
+[Back](../../Intro.md)
 
 A block with a looping animation
 

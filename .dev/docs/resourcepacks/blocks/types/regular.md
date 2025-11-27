@@ -1,5 +1,5 @@
 # Resource Packs : Regular Blocks
-[Back](../Intro.md)
+[Back](../../Intro.md)
 
 A regular block, no animation, no variations. A simple image.
 

@@ -1,5 +1,5 @@
 # Resource Packs : Variation Blocks
-[Back](../Intro.md)
+[Back](../../Intro.md)
 
 Allows a block to change its texture without switching to (or having to create) a new block
 
