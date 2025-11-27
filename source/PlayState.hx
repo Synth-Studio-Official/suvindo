@@ -109,8 +109,11 @@ class PlayState extends FlxState
 					var old_block = new Block(block?.block_id, block?.x, block?.y);
 					if (world_info.has_animated_blocks)
 					{
-						if (Reflect.fields(world_info.animated_block_universal_frames).contains(old_block.block_id))
-							old_block.animation.frameIndex = Reflect.field(world_info.animated_block_universal_frames, old_block.block_id);
+						if (block?.frameIndex != null)
+						{
+							old_block.animation.frameIndex = block.frameIndex;
+							old_block.animation.play(old_block.animation.name);
+						}
 					}
 					blocks.add(old_block);
 				}
@@ -136,7 +139,6 @@ class PlayState extends FlxState
 			cursor_block: null,
 			blocks: [],
 			has_animated_blocks: false,
-			animated_block_universal_frames: {},
 			random_id: (world_info?.random_id ?? null) ?? Sha256.encode('' + FlxG.random.int(0, 255)),
 			game_version: Application.current.meta.get('version') + #if debug ' [PROTOTYPE]' #else '' #end,
 			world_name: WORLD_NAME ?? ((world_info?.world_name ?? null) ?? null),
@@ -151,20 +153,19 @@ class PlayState extends FlxState
 		if (blocks?.members != null)
 			for (block in blocks.members)
 			{
-				world_info.blocks.push({
+				var block_data:Dynamic = {
 					block_id: block.block_id,
 					x: block.x,
 					y: block.y,
-				});
+				};
 
-				if (block.block_json?.type == 'animated' && !Reflect.hasField(world_info.animated_block_universal_frames, block.block_id))
+				if (block.block_json?.type == 'animated')
 				{
 					world_info.has_animated_blocks = true;
-					Reflect.setField(world_info.animated_block_universal_frames, block.block_id,
-						block.animation.frameIndex +
-						((FlxG.random.bool((block.animation.frameIndex / block.animation.numFrames) * 100)) ? ((block.animation.frameIndex / block.animation.numFrames == 1) ? block.animation.curAnim.frames[0]
-							- block.animation.frameIndex : 1) : 0));
+					block_data.frameIndex = block.animation.frameIndex;
 				}
+
+				world_info.blocks.push(block_data);
 
 				if (block.graphic_path.contains('resources/'))
 					if (!world_info.resource_packs.contains(block.graphic_path.split('/')[1]))

@@ -10,7 +10,6 @@ typedef WorldInfo =
 	?cursor_block:{x:Float, y:Float, block_id:String},
 	?blocks:Array<Dynamic>,
 	?has_animated_blocks:Bool,
-	?animated_block_universal_frames:Dynamic,
 	random_id:String,
 	?world_name:String,
 	game_version:String,
