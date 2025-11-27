@@ -22,7 +22,7 @@ class TrackManager
 		var tracksDir:Array<String> = ResourcePacks.readDirectory('music/');
 		for (track in RequestsManager.ADD.tracks)
 		{
-			var path:String = ResourcePacks.getPath('music/' + track + '.png');
+			var path:String = ResourcePacks.getPath('music/' + track + '.wav');
 			if (#if !sys Assets.exists #else FileSystem.exists #end (path))
 				tracksDir.push(path);
 		}
@@ -61,7 +61,8 @@ class TrackManager
 		if (TRACKS_LIST.length < 1)
 			return;
 
-		var track = ResourcePacks.getPath(TRACKS_LIST[FlxG.random.int(0, TRACKS_LIST.length - 1)]);
+		var track = ResourcePacks.getPath('music/' + TRACKS_LIST[FlxG.random.int(0, TRACKS_LIST.length - 1)] + '.wav');
+		trace('playing ' + track);
 
 		if (FlxG.sound.music == null)
 			FlxG.sound.music = new FlxSound();
