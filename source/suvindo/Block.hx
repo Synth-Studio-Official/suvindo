@@ -113,8 +113,12 @@ class Block extends FlxSprite
 		else
 			defaultLoadGraphic(new_block);
 
+		this.scale.set(1, 1);
 		if (this.graphic != null)
-			this.scale.set(1 * (16 / this.graphic.width), 1 * (16 / this.graphic.height));
+			if (block_json.type == "animated")
+				this.scale.set(1 * (16 / this.block_json.animated.block_width), 1 * (16 / this.block_json.animated.block_height));
+			else
+				this.scale.set(1 * (16 / this.graphic.width), 1 * (16 / this.graphic.height));
 		this.updateHitbox();
 
 		this.block_id = new_block;
