@@ -32,6 +32,8 @@
 	<set name="BUILD_DIR" value="export/debug" if="debug"/>
 	<set name="BUILD_DIR" value="export/release" unless="debug"/>
 
+	<set name="BUILD_DIR" value="export/release_debugicon" if="DEBUG_ICON"/>
+
 	<source path="source" />
 
 	<assets path="assets/base" rename="assets"/>
@@ -102,19 +104,22 @@
 	<!-- _________________________________ Custom _______________________________ -->
 
 	<!--Place custom nodes like icons here-->
-	<icon path="assets/icons/16x.png" unless="debug"/>
-	<icon path="assets/icons/16x.png" unless="debug" size="16"/>
-	<icon path="assets/icons/24x.png" unless="debug" size="24"/>
-	<icon path="assets/icons/32x.png" unless="debug" size="32"/>
-	<icon path="assets/icons/40x.png" unless="debug" size="40"/>
-	<icon path="assets/icons/48x.png" unless="debug" size="48"/>
-	<icon path="assets/icons/64x.png" unless="debug" size="64"/>
 
-	<icon path="assets/icons/16x-debug.png" if="debug"/>
-	<icon path="assets/icons/16x-debug.png" if="debug" size="16"/>
-	<icon path="assets/icons/24x-debug.png" if="debug" size="24"/>
-	<icon path="assets/icons/32x-debug.png" if="debug" size="32"/>
-	<icon path="assets/icons/40x-debug.png" if="debug" size="40"/>
-	<icon path="assets/icons/48x-debug.png" if="debug" size="48"/>
-	<icon path="assets/icons/64x-debug.png" if="debug" size="64"/>
+	<define name="DEBUG_ICON" if="debug"/>
+
+	<icon path="assets/icons/16x.png" unless="DEBUG_ICON"/>
+	<icon path="assets/icons/16x.png" unless="DEBUG_ICON" size="16"/>
+	<icon path="assets/icons/24x.png" unless="DEBUG_ICON" size="24"/>
+	<icon path="assets/icons/32x.png" unless="DEBUG_ICON" size="32"/>
+	<icon path="assets/icons/40x.png" unless="DEBUG_ICON" size="40"/>
+	<icon path="assets/icons/48x.png" unless="DEBUG_ICON" size="48"/>
+	<icon path="assets/icons/64x.png" unless="DEBUG_ICON" size="64"/>
+
+	<icon path="assets/icons/16x-debug.png" if="DEBUG_ICON"/>
+	<icon path="assets/icons/16x-debug.png" if="DEBUG_ICON" size="16"/>
+	<icon path="assets/icons/24x-debug.png" if="DEBUG_ICON" size="24"/>
+	<icon path="assets/icons/32x-debug.png" if="DEBUG_ICON" size="32"/>
+	<icon path="assets/icons/40x-debug.png" if="DEBUG_ICON" size="40"/>
+	<icon path="assets/icons/48x-debug.png" if="DEBUG_ICON" size="48"/>
+	<icon path="assets/icons/64x-debug.png" if="DEBUG_ICON" size="64"/>
 </project>
