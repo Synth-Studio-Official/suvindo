@@ -102,6 +102,9 @@ class Block extends FlxSprite
 
 						animation.add('animation', block_json.animated?.frames ?? getFrames(), block_json.animated?.fps ?? 24);
 						animation.play('animation');
+					
+					case "regular":
+						defaultLoadGraphic(block_json?.regular?.texture ?? new_block);
 
 					default:
 						defaultLoadGraphic(new_block);

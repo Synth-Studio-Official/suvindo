@@ -12,6 +12,7 @@
     - Types:
         - "variations" - Allows the block to change its texture without switching to (or having to create) a new block
         - "animated" - Allows blocks to be animated
+        - "regular" - Default block functions, just allows you to change the texture location
     - [TYPE: "variations"] variations - An array of variations the block has with the following fields for each variation
         - "id" - Name of the variation, used in the watermark
         - "texture" - Path of the texture you'd like to use relative to the images folder, so if your texture is in `assets/images/mycoolblockstates/coolstate5.png`, then you'd put `mycoolblockstates/coolstate5`
@@ -21,6 +22,8 @@
         - "texture" - Path of the texture you'd like to use relative to the images folder, so if your texture is in `assets/images/myanimatedblock/animatedblock.png`, then you'd put `myanimatedblock/animatedblock`
         - "frames" - The frame order your animation has, starting from 0 it can be [0,2,1,2,0], [0,1,2,1,0], and it will change the frame order so in the first one its a loop of frame 1, 3, 2, 3, then 1, and in the second 1,2,3,1,0.
         - "fps" - How many frames are played in a second
+    - [TYPE: "regular"] regular - Data related to regular blocks
+        - "texture" - Custom path of the texture you'd like to use relative to the images folder, so if your texture is in `assets/images/blocks/myblocks/block.png`, then you'd put `blocks/myblocks/block`
 - Added Water Block
     - Type: "animated"
 - Added Wool Block

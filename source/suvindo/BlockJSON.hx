@@ -4,8 +4,14 @@ typedef BlockJSON =
 {
 	var ?variations:Array<BlockVariation>;
 	var ?animated:AnimatedEntry;
+	var ?regular:RegularEntry;
 
 	var ?type:String;
+}
+
+typedef RegularEntry =
+{
+	?texture:String
 }
 
 typedef BlockTexture =
