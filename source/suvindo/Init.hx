@@ -20,7 +20,7 @@ class Init extends FlxState
 		#if RESOURCE_PACK_MENU
 		FlxG.switchState(() -> new ResourcePackMenu());
 		#else
-		#if sys
+		#if (debug && sys)
 		FlxG.switchState(() -> new DebugWorldSelection());
 		#else
 		FlxG.switchState(() -> new PlayState());
