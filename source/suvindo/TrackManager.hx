@@ -58,8 +58,14 @@ class TrackManager
 		if (MUSIC_RATE == OFF)
 			return;
 
-		FlxG.sound.music = new FlxSound();
-		FlxG.sound.music.loadStream(ResourcePacks.getPath(TRACKS_LIST[FlxG.random.int(0, TRACKS_LIST.length - 1)]), false, false, () ->
+		if (TRACKS_LIST.length < 1)
+			return;
+
+		var track = ResourcePacks.getPath(TRACKS_LIST[FlxG.random.int(0, TRACKS_LIST.length - 1)]);
+
+		if (FlxG.sound.music == null)
+			FlxG.sound.music = new FlxSound();
+		FlxG.sound.music.loadStream(track, false, false, () ->
 		{
 			FlxTimer.wait(FlxG.random.float(60, 60 * switch (MUSIC_RATE)
 			{
@@ -70,6 +76,7 @@ class TrackManager
 				case VARIABLE: ((FlxG.state is DebugWorldSelection) ? FlxG.random.float(0.5, 15) : FlxG.random.float(0.5, 120));
 			}), playTrack);
 		});
+		FlxG.sound.music.play();
 	}
 }
 
