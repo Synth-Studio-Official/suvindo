@@ -158,7 +158,7 @@ class DebugWorldSelection extends FlxState
 					count++;
 				}
 				#end
-				FlxG.switchState(() -> new PlayState(world_list[cur_selected] ?? world_name.text));
+				FlxG.switchState(() -> new PlayState((world_list[cur_selected] == null) ? world_name.text : world_list[cur_selected]));
 			}
 		}
 	}
