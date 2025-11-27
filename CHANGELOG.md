@@ -3,12 +3,13 @@
 - [New system: Requests](/.dev/docs/resourcepacks/requests/overview.md) : A series of .JSON files that will give the game instructions
 
 ## Resource Packs
-[Changes connected to the new Requests system](#requests)
+Changes connected to [the new Requests system](#requests) and the new tracks system
 - The resource `pack_version` is now `3`
     - Version `2` is supported
     - Version `1` is still supported
 
 ## General
+- Added support for music tracks to play in the background randomly
 - Changed Resource Pack Menu Pack Info text size from 32 to 16
 - Fixed Resource Pack Menu warnings not displaying
 - Several issues with the Resource Pack readDirectory function were fixed
