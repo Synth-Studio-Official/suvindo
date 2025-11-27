@@ -21,6 +21,12 @@ class BlockList
 
 		#if sys
 		var blocksDir:Array<String> = ResourcePacks.readDirectory('images/blocks/');
+		for (block in RequestsManager.ADD.blocks)
+		{
+			var path:String = ResourcePacks.getPath('images/' + block);
+			if (path != null)
+				blocksDir.push(path);
+		}
 		for (image in blocksDir)
 		{
 			var list_entry:String = Path.withoutExtension(Path.withoutDirectory(image));

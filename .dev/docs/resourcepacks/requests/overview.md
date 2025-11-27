@@ -3,7 +3,7 @@
 
 A series of .JSON files that will give the game instructions
 
-# JSON
+## JSON
 Asset Path: `data/requests/`
     - You cannot do requests without this being where it's located
 
@@ -13,3 +13,8 @@ Asset Path: `data/requests/`
 - `blocks` (optional)
     - `type: remove` : List of Block ID's
     - `type: add` : List of Block Paths relative to the images folder (I.e `myresourcepack/blocks/jujin` would redirect to `assets/images/myresourcepack/blocks/jujin.png` in-game along with the resource pack versions)
+
+## Examples
+
+- [Adding Blocks](/.dev/debug-resources/base/block_adding/data/requests/add-bluestone.json)
+- [Removing Blocks](/.dev/debug-resources/base/block_removing/data/requests/remove-leaves.json)
