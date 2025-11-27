@@ -1,5 +1,6 @@
 package suvindo;
 
+import flixel.sound.FlxSound;
 import flixel.util.FlxTimer;
 import flixel.FlxG;
 import haxe.io.Path;
@@ -51,12 +52,13 @@ class TrackManager
 
 	public static function playTrack()
 	{
-		if (FlxG.sound.music.playing)
+		if (FlxG.sound.music?.playing)
 			return;
 
 		if (MUSIC_RATE == OFF)
 			return;
 
+		FlxG.sound.music = new FlxSound();
 		FlxG.sound.music.loadStream(ResourcePacks.getPath(TRACKS_LIST[FlxG.random.int(0, TRACKS_LIST.length - 1)]), false, false, () ->
 		{
 			FlxTimer.wait(FlxG.random.float(60, 60 * switch (MUSIC_RATE)
