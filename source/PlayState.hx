@@ -44,21 +44,23 @@ class PlayState extends FlxState
 		{
 			#if sys
 			if (FileSystem.exists('assets/saves/' + world + '.json'))
-			{
-				world_info = Json.parse(File.getContent('assets/saves/' + world + '.json'));
 			#else
 			if (Assets.exists('assets/saves/' + world + '.json'))
-			{
-				world_info = Json.parse(Assets.getText('assets/saves/' + world + '.json'));
 			#end
+			{
+				#if sys
+				world_info = Json.parse(File.getContent('assets/saves/' + world + '.json'));
+				#else
+				world_info = Json.parse(Assets.getText('assets/saves/' + world + '.json'));
+				#end
 
 				WORLD_NAME = world_info.world_name;
 			}
-			else
-			{
-				WORLD_NAME = world;
-				saveWorldInfo();
-			}
+		else
+		{
+			WORLD_NAME = world;
+			saveWorldInfo();
+		}
 		}
 		autosave_timer = new FlxTimer().start(60 * 1, t ->
 		{
