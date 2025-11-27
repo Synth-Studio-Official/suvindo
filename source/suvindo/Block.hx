@@ -22,6 +22,8 @@ class Block extends FlxSprite
 	public var block_id:String;
 	public var block_json:BlockJSON;
 
+	public var graphic_path:String;
+
 	public var variation_index:Int = 0;
 	public var variations:Array<BlockVariation> = [];
 
@@ -45,6 +47,7 @@ class Block extends FlxSprite
 			if (Path.withoutDirectory(block_path) == block)
 				path = ResourcePacks.getPath('images/' + block_path + '.' + ext);
 
+		graphic_path = path;
 		return path;
 	}
 

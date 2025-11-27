@@ -26,9 +26,9 @@ class WorldInfoClass
 	{
 		var warning:String = '';
 
-		var add_warning = function(warning:String)
+		var add_warning = function(msg:String)
 		{
-			warning += '- ' + warning + '\n';
+			warning += '- ' + msg + '\n';
 		}
 
 		var version_single_int = VersionConverts.convertToInt(world_info.game_version);
@@ -43,7 +43,7 @@ class WorldInfoClass
 			add_warning('Prototype version!');
 
 		var missing_resource_packs:Array<String> = [];
-		for (pack in world_info?.resource_packs ?? [])
+		for (pack in world_info.resource_packs)
 		{
 			if (!ResourcePacks.ENABLED_RESOURCE_PACKS.contains(pack))
 				missing_resource_packs.push(pack);
@@ -56,10 +56,10 @@ class WorldInfoClass
 		var unknown_blocks:Array<String> = [];
 		for (block in world_info.blocks)
 		{
-			if (RequestsManager.REMOVE.blocks.contains(block))
-				removed_blocks.push(block);
-			else if (!BlockList.BLOCK_LIST.contains(block))
-				unknown_blocks.push(block);
+			if (RequestsManager.REMOVE.blocks.contains(block) && !removed_blocks.contains(block.block_id))
+				removed_blocks.push(block.block_id);
+			else if (!BlockList.BLOCK_LIST.contains(block) && !unknown_blocks.contains(block.block_id))
+				unknown_blocks.push(block.block_id);
 		}
 
 		if (removed_blocks.length > 0)

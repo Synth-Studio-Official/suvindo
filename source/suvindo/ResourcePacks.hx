@@ -174,9 +174,9 @@ class ResourcePacks
 	{
 		var warning:String = '';
 
-		var add_warning = function(warning:String)
+		var add_warning = function(msg:String)
 		{
-			warning += '- ' + warning + '\n';
+			warning += '- ' + msg + '\n';
 		}
 
 		if (pack_version < MIN_PACK_VERSION)
