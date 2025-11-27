@@ -13,12 +13,14 @@ class RequestsManager
 {
 	public static var REMOVE:
 		{
-			?blocks:Array<String>
+			blocks:Array<String>
 		};
 
 	public static function reload()
 	{
-		REMOVE = {};
+		REMOVE = {
+			blocks: []
+		};
 
 		#if sys
 		for (request in ResourcePacks.readDirectory('data/requests/'))
