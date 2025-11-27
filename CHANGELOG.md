@@ -8,6 +8,7 @@
     - Version `1` is still supported
 
 ## General
+- Fixed Resource Pack Menu warnings not displaying
 - Several issues with the Resource Pack readDirectory function were fixed
     - Fixed resource pack paths not including the directory
     - Fixed crashes when trying to read non-existant resource pack directories
