@@ -1,5 +1,6 @@
 package suvindo;
 
+import flixel.util.FlxTimer;
 import flixel.FlxG;
 import flixel.FlxState;
 
@@ -16,11 +17,14 @@ class Init extends FlxState
 			ReloadPlugin.reload.add(BlockList.reload);
 		}
 		FlxG.plugins.addPlugin(new ReloadPlugin());
+		ReloadPlugin.reload.dispatch();
 
-		#if RESOURCE_PACK_MENU
-		FlxG.switchState(() -> new ResourcePackMenu());
-		#else
-		FlxG.switchState(() -> new DebugWorldSelection());
-		#end
+		FlxTimer.wait(.1, () -> {
+			#if RESOURCE_PACK_MENU
+			FlxG.switchState(() -> new ResourcePackMenu());
+			#else
+			FlxG.switchState(() -> new DebugWorldSelection());
+			#end
+		});
 	}
 }
