@@ -203,10 +203,10 @@ class PlayState extends FlxState
 			FlxG.switchState(() -> new ResourcePackMenu());
 		}
 
-		if (FlxG.keys.justReleased.P)
+		if (FlxG.keys.justReleased.ESCAPE)
 		{
 			saveWorldInfo();
-			FlxG.switchState(() -> new DebugWorldSelection());
+			FlxTimer.wait(.1, () -> FlxG.switchState(() -> new DebugWorldSelection()));
 		}
 
 		if (FlxG.keys.anyJustReleased([W, A, S, D, UP, LEFT, DOWN, RIGHT, ENTER, TAB, L]))

@@ -58,6 +58,7 @@ L + SHIFT - Switch to the previous variation
 F3 - Display extra info on the watermark
 
 ENTER - Place / Break blocks (depending on if you're touching a block)
+ESCAPE - Leave to World Selection
 
 #### Resource Pack Menu
 
@@ -70,6 +71,13 @@ S / Down Arrow Key + Shift - Move down and move the resource pack down in priori
 ENTER - Disable / Enable the currently selected Resource Pack
 
 ESCAPE - Leave to PlayState / The Main Game
+
+#### World Selection Menu
+
+W / Up Arrow Key - Move up
+S / Down Arrow Key - Move down
+
+ENTER - Select the current world (or make a new world)
 
 ### Resource Packs
 
