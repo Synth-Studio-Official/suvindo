@@ -25,6 +25,8 @@ The Musician of the project, they've got an [instagram](https://www.instagram.co
 
 Assistant Programmer and Owner of the Synth Studio... studio! Pretty chill friend, he's the reason a main menu came so soon! Heheh.
 
+He has decided that you guys shall have his [Github](https://github.com/ZSolarDev) be the link you see!
+
 ### Friday Night Funkin'
 
 More specifically [EliteMasterEric](https://x.com/EliteMasterEric), [Ninjamuffin99](https://x.com/ninja_muffin99), and [Lasercar](https://github.com/Lasercar).
