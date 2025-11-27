@@ -57,7 +57,12 @@ class DebugWorldSelection extends FlxState
 		}
 		#end
 
-		trace("world_list: " + world_list);
+		trace("world_list: ");
+		for (world in world_list)
+		{
+			if (world != null)
+				trace(' * ' + ((world.length > 32 + 3) ? world.substring(0, 32) + '...' : world));
+		}
 
 		world_texts = new FlxTypedGroup<FlxText>();
 		add(world_texts);
