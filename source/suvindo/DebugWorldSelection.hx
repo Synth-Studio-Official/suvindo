@@ -42,7 +42,7 @@ class DebugWorldSelection extends FlxState
 
 			if (world_json != null)
 			{
-				world_list.push(Path.withoutDirectory(Path.withoutExtension(save)));
+				world_list.push(world_json.world_name ?? Path.withoutDirectory(Path.withoutExtension(save)));
 			}
 		}
 
