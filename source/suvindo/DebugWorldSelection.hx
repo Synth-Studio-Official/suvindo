@@ -112,16 +112,23 @@ class DebugWorldSelection extends FlxState
 				camFollow.y = world_text.y;
 				if (world_list[cur_selected] != null)
 				{
-					var cur_world:WorldInfo = Json.parse(File.getContent('assets/saves/' + world_list[cur_selected]));
+					try
+					{
+						var cur_world:WorldInfo = Json.parse(File.getContent('assets/saves/' + world_list[cur_selected] + '.json'));
 
-					worldInfo.text = 'Name: '
-						+ cur_world.world_name
-						+ '\nRID: '
-						+ cur_world.random_id
-						+ '\n\nGame Version: '
-						+ cur_world.game_version
-						+ '\n\nGame Version Warning(s):\n'
-						+ WorldInfoClass.getGameVersionWarnings(cur_world.game_version);
+						worldInfo.text = 'Name: '
+							+ cur_world.world_name
+							+ '\nRID: '
+							+ cur_world.random_id
+							+ '\n\nGame Version: '
+							+ cur_world.game_version
+							+ '\n\nGame Version Warning(s):\n'
+							+ WorldInfoClass.getGameVersionWarnings(cur_world.game_version);
+					}
+					catch (e)
+					{
+						trace(e);
+					}
 				}
 			}
 		}
