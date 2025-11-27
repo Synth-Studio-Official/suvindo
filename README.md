@@ -26,7 +26,7 @@ I (Sphis) got the Hue Saturation and Value shader from the code. Specifically th
 
 Surely you're not just here to check out the code right?
 
-### Controls
+## Playing the Game : Controls
 
 `ANYWHERE` : R - Reload Resource Packs and the Block list
 
@@ -64,7 +64,7 @@ Surely you're not just here to check out the code right?
 
 `WORLD SELECTION MENU` : ENTER - Select the current world (or make a new world)
 
-### Resource Packs
+## Playing the Game : Resource Packs
 
 See the docs on the resource packs [here](/.dev/docs/resourcepacks/Intro.md).
 
