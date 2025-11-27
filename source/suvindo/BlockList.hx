@@ -24,7 +24,6 @@ class BlockList
 		for (block in RequestsManager.ADD.blocks)
 		{
 			var path:String = ResourcePacks.getPath('images/' + block + '.png');
-			trace(path);
 			if (#if !sys Assets.exists #else FileSystem.exists #end (path))
 				blocksDir.push(path);
 		}
