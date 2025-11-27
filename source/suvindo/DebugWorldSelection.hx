@@ -56,6 +56,7 @@ class DebugWorldSelection extends FlxState
 		{
 			var world_txt:FlxText = new FlxText(2, 2, 0, world_id ?? "New world", 32);
 			world_texts.add(world_txt);
+			world_txt.ID = i;
 
 			i++;
 		}
@@ -77,7 +78,6 @@ class DebugWorldSelection extends FlxState
 
 		for (world_text in world_texts)
 		{
-			world_text.ID = world_list.indexOf(world_text.text);
 			world_text.y = 2 + ((world_text.size * 4) * world_text.ID);
 			world_text.color = (world_text.ID == cur_selected) ? FlxColor.YELLOW : FlxColor.WHITE;
 
