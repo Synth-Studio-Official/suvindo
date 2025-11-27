@@ -40,7 +40,7 @@ class PlayState extends FlxState
 		super();
 
 		if (world == null && world_info != null)
-			world = (world_info?.world_name ?? null) ?? (world_info?.random_id ?? null) ?? null;
+			world = (world_info?.world_name ?? null) ?? ('world_' + world_info?.random_id ?? null) ?? null;
 
 		if (world != null)
 		{
@@ -129,7 +129,7 @@ class PlayState extends FlxState
 					y: block.y,
 				});
 
-				if (block.block_json?.type == "animated" && !Reflect.hasField(world_info.animated_block_universal_frames, block.block_id))
+				if (block.block_json?.type == 'animated' && !Reflect.hasField(world_info.animated_block_universal_frames, block.block_id))
 				{
 					world_info.has_animated_blocks = true;
 					Reflect.setField(world_info.animated_block_universal_frames, block.block_id,
@@ -143,7 +143,7 @@ class PlayState extends FlxState
 		if (!FileSystem.exists('assets/saves'))
 			FileSystem.createDirectory('assets/saves');
 
-		File.saveContent('assets/saves/world_' + world_info.random_id + '.json', Json.stringify(world_info, "\t"));
+		File.saveContent('assets/saves/' + ((world_info?.world_name ?? null) ?? 'world_' + world_info.random_id) + '.json', Json.stringify(world_info, '\t'));
 		#end
 	}
 
@@ -214,13 +214,13 @@ class PlayState extends FlxState
 					var new_block = new Block(cursor_block.block_id, cursor_block.x, cursor_block.y);
 					blocks.add(new_block);
 
-					if (new_block?.block_json?.type == "variations")
+					if (new_block?.block_json?.type == 'variations')
 					{
 						new_block.variation_index = cursor_block.variation_index;
 						new_block.changeVariationIndex(0);
 					}
 
-					if (new_block?.block_json?.type == "animated")
+					if (new_block?.block_json?.type == 'animated')
 					{
 						onReload();
 					}
@@ -255,7 +255,7 @@ class PlayState extends FlxState
 
 			if (FlxG.keys.justReleased.L)
 			{
-				if (cursor_block.block_json?.type == "variations")
+				if (cursor_block.block_json?.type == 'variations')
 					cursor_block.changeVariationIndex((FlxG.keys.pressed.SHIFT) ? -1 : 1);
 			}
 		}
