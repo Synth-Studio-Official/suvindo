@@ -25,15 +25,24 @@ class TrackManager
 		trace('RELOADING');
 		#if sys
 		var tracksDir:Array<String> = ResourcePacks.readDirectory('music/');
+		var requestedTracks:Map<String, String> = [];
 		for (track in RequestsManager.ADD.tracks)
 		{
 			var path:String = ResourcePacks.getPath('music/' + track + '.wav');
+			trace(path);
 			if (#if !sys Assets.exists #else FileSystem.exists #end (path))
+			{
 				tracksDir.push(path);
+				requestedTracks.set(Path.withoutExtension(Path.withoutDirectory(path)), track);
+			}
 		}
 		for (track in tracksDir)
 		{
 			var list_entry:String = Path.withoutExtension(Path.withoutDirectory(track));
+
+			if (requestedTracks.exists(list_entry))
+				list_entry = requestedTracks.get(list_entry);
+
 			var accept_entry = () ->
 			{
 				if (!TRACKS_LIST.contains(list_entry))

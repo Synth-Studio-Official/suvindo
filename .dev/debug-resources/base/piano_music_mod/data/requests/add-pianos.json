@@ -1,0 +1,8 @@
+{
+    "request": "add",
+    "tracks": [
+        "piano/piano1",
+        "piano/piano2",
+        "piano/piano3"
+    ]
+}

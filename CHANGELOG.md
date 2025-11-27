@@ -1,3 +1,9 @@
+# 0.2.2 - 11/27/2025
+## General
+- General QOL fixes to the requests system
+    - Fixed crashes with double-slashed paths (ex: `resources/myrp//myfile.extension`)
+    - Requested tracks can play properly
+
 # 0.2.1 - 11/27/2025
 ## General
 - Fixed block variations not being saved in worlds
