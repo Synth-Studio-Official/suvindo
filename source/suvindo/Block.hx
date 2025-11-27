@@ -82,19 +82,16 @@ class Block extends FlxSprite
 
 						changeVariationIndex(0);
 					case 'animated':
-						#if sys
-						loadGraphic(FlxGraphic.fromBitmapData(BitmapData.fromFile(ResourcePacks.getPath('images/blocks/' + new_block + '.png'))), true,
-							block_json.animated.block_width, block_json.animated.block_height);
-						#else
-						loadGraphic(ResourcePacks.getPath('images/blocks/' + new_block + '.png'), true, block_json.animated.block_width,
-							block_json.animated.block_height);
-						#end
+						loadGraphic(#if sys FlxGraphic.fromBitmapData(BitmapData.fromFile(ResourcePacks.getPath('images/blocks/' + new_block +
+							'.png'))) #else ResourcePacks.getPath('images/blocks/'
+							+ new_block + '.png') #end,
+							true, block_json.animated.block_width, block_json.animated.block_height);
 
-						var getFrames = function():Array<Int> {
-
+						var getFrames = function():Array<Int>
+						{
 							var frames = [];
 							var i = 0;
-							while (i < Std.int(this.graphic.width / block_json.animated.block_width))
+							while (i < this.animation.numFrames)
 							{
 								frames.push(i);
 								i++;
