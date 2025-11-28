@@ -1,7 +1,7 @@
 package;
 
+import suvindo.BlockGrid;
 import suvindo.TrackManager;
-import suvindo.Requests.RequestsManager;
 import suvindo.WorldInfo;
 import suvindo.DebugWorldSelection;
 import flixel.util.FlxTimer;
@@ -20,14 +20,13 @@ import flixel.text.FlxText;
 import suvindo.BlockList;
 import flixel.FlxG;
 import suvindo.Block;
-import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.FlxState;
 
 using StringTools;
 
 class PlayState extends FlxState
 {
-	public var blocks:FlxTypedGroup<Block>;
+	public var blocks:BlockGrid;
 	public var cursor_block:Block;
 	public var watermark:FlxText;
 
@@ -52,11 +51,8 @@ class PlayState extends FlxState
 			if (Assets.exists('assets/saves/' + world + '.json'))
 			#end
 			{
-				#if sys
-				world_info = Json.parse(File.getContent('assets/saves/' + world + '.json'));
-				#else
-				world_info = Json.parse(Assets.getText('assets/saves/' + world + '.json'));
-				#end
+				blocks = new BlockGrid('assets/saves/' + world + '.json');
+				world_info = blocks.world_info;
 
 				WORLD_NAME = world_info.world_name;
 			}
@@ -65,6 +61,10 @@ class PlayState extends FlxState
 			WORLD_NAME = world;
 			saveWorldInfo();
 		}
+		}
+		else
+		{
+			blocks = new BlockGrid(null);
 		}
 		autosave_timer = new FlxTimer().start(60 * 1, t ->
 		{
@@ -77,7 +77,6 @@ class PlayState extends FlxState
 	{
 		super.create();
 
-		blocks = new FlxTypedGroup<Block>();
 		add(blocks);
 
 		cursor_block = new Block(BlockList.BLOCK_LIST[0]);
@@ -92,39 +91,6 @@ class PlayState extends FlxState
 
 		if (world_info != null)
 		{
-			if (world_info.blocks != null)
-			{
-				for (block in world_info.blocks)
-				{
-					if (block?.block_id == null)
-						continue;
-					if (block?.x == null)
-						continue;
-					if (block?.y == null)
-						continue;
-					if (RequestsManager.REMOVE.blocks.contains(block?.block_id))
-						continue;
-					if (!BlockList.BLOCK_LIST.contains(block?.block_id))
-						continue;
-
-					var old_block = new Block(block?.block_id, block?.x, block?.y);
-					if (world_info.has_animated_blocks)
-					{
-						if (block?.frameIndex != null)
-						{
-							old_block.animation.play(old_block.animation.name, false, false, block.frameIndex);
-							old_block.animation.frameIndex = block.frameIndex;
-						}
-					}
-					if (block?.variation_index != null)
-					{
-						old_block.variation_index = block.variation_index;
-						old_block.changeVariationIndex(0);
-					}
-					blocks.add(old_block);
-				}
-			}
-
 			if (world_info.cursor_block != null)
 			{
 				cursor_block.setPosition(world_info.cursor_block.x ?? cursor_block.x, world_info.cursor_block.y ?? cursor_block.y);
