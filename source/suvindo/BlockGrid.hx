@@ -14,8 +14,10 @@ class BlockGrid extends FlxTypedGroup<Block>
 
 	function set_x(x:Float):Float
 	{
-		for (block in this.members)
+		applyBlockChanges(block ->
+		{
 			block.offset.x = x;
+		});
 
 		return x;
 	}
@@ -24,10 +26,30 @@ class BlockGrid extends FlxTypedGroup<Block>
 
 	function set_y(y:Float):Float
 	{
-		for (block in this.members)
+		applyBlockChanges(block ->
+		{
 			block.offset.y = y;
+		});
 
 		return y;
+	}
+
+	public var alpha(default, set):Float;
+
+	function set_alpha(alpha:Float):Float
+	{
+		applyBlockChanges(block ->
+		{
+			block.alpha = alpha;
+		});
+
+		return alpha;
+	}
+
+	public function applyBlockChanges(changes:Block->Void)
+	{
+		for (block in this.members)
+			changes(block);
 	}
 
 	override public function new(world_file_path:String, ?x:Float = 0, ?y:Float = 0)
