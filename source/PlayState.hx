@@ -1,5 +1,6 @@
 package;
 
+import suvindo.TrackManager;
 import suvindo.Requests.RequestsManager;
 import suvindo.WorldInfo;
 import suvindo.DebugWorldSelection;
@@ -136,6 +137,8 @@ class PlayState extends FlxState
 		ReloadPlugin.reload.add(onReload);
 
 		FlxG.mouse.visible = false;
+
+		TrackManager.playTrack();
 	}
 
 	public function saveWorldInfo(save_file:Bool = true)
