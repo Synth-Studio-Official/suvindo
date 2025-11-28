@@ -44,6 +44,8 @@ Surely you're not just here to check out the code right?
 
 `GAMEPLAY` : F3 - Display extra info on the watermark
 
+`GAMEPLAY` : F1 - Hide ALL UI
+
 `GAMEPLAY` : ENTER - Place / Break blocks (depending on if you're touching a block)
 
 `GAMEPLAY` : ESCAPE - Leave to World Selection
