@@ -1,4 +1,8 @@
 # 0.3.0 - 11/28/2025
+## Blocks
+- Added "Cactus" block
+    - Type: "regular"
+
 ## General
 - Gameplay now calls for tracks to play
 - Removed ability for the Resource Pack menu to play music
