@@ -1,5 +1,6 @@
 # 0.3.0 - 11/28/2025
 ## General
+- Added `F1` Keybind : Hides **ALL** UI
 - Fixed `MUSIC_RATE` compiler flags
     - Instead of `MUSIC_RATE=` it is now:
         - `MUSIC_RATE_OFF`
