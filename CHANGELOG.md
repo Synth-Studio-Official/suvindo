@@ -1,3 +1,13 @@
+# 0.3.0 - 11/28/2025
+## General
+- Fixed `MUSIC_RATE` compiler flags
+    - Instead of `MUSIC_RATE=` it is now:
+        - `MUSIC_RATE_OFF`
+        - `MUSIC_RATE_CONSTANT`
+        - `MUSIC_RATE_DEFAULT`
+        - `MUSIC_RATE_FREQUENT`
+        - `MUSIC_RATE_VARIABLE`
+
 # 0.2.2 - 11/27/2025
 ## General
 - Fixed Track timer not resetting when the music is destroyed

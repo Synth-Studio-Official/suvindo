@@ -21,15 +21,15 @@ class Init extends FlxState
 		}
 		FlxG.plugins.addPlugin(new ReloadPlugin());
 
-		#if (MUSIC_RATE == OFF)
+		#if (MUSIC_RATE_OFF)
 		TrackManager.MUSIC_RATE = OFF;
-		#elseif (MUSIC_RATE == CONSTANT)
+		#elseif (MUSIC_RATE_CONSTANT)
 		TrackManager.MUSIC_RATE = CONSTANT;
-		#elseif (MUSIC_RATE == DEFAULT)
+		#elseif (MUSIC_RATE_DEFAULT)
 		TrackManager.MUSIC_RATE = DEFAULT;
-		#elseif (MUSIC_RATE == FREQUENT)
+		#elseif (MUSIC_RATE_FREQUENT)
 		TrackManager.MUSIC_RATE = FREQUENT;
-		#elseif (MUSIC_RATE == VARIABLE)
+		#elseif (MUSIC_RATE_VARIABLE)
 		TrackManager.MUSIC_RATE = VARIABLE;
 		#end
 
