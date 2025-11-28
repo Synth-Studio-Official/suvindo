@@ -1,5 +1,6 @@
 # 0.3.0 - 11/28/2025
 ## General
+- Removed ability for the Resource Pack menu to play music
 - Added `F1` Keybind : Hides **ALL** UI
 - Fixed `MUSIC_RATE` compiler flags
     - Instead of `MUSIC_RATE=` it is now:

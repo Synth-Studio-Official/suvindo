@@ -35,7 +35,6 @@ class ResourcePackMenu extends FlxState
 	override function create()
 	{
 		super.create();
-		TrackManager.playTrack();
 
 		pack_list = ResourcePacks.RESOURCE_PACKS.copy();
 		literal_pack_list = [];
