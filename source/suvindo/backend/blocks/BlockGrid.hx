@@ -91,26 +91,7 @@ class BlockGrid extends FlxTypedGroup<Block>
 
 			if (world_info.blocks != null)
 			{
-				var remove_counts:Int = 0;
-				var unique_positions:Array<FlxPoint> = [];
-				for (block in world_info.blocks)
-				{
-					if (block?.x == null)
-						continue;
-					if (block?.y == null)
-						continue;
-
-					var point:FlxPoint = new FlxPoint(block.x, block.y);
-					if (!unique_positions.contains(point))
-						unique_positions.push(point);
-					else
-					{
-						remove_counts++;
-						world_info.blocks.remove(block);
-					}
-				}
-
-				trace('Removed ' + remove_counts + ' blocks at positions of other blocks');
+				var overlap_count:Int = 0;
 
 				for (block in world_info.blocks)
 				{
@@ -131,24 +112,41 @@ class BlockGrid extends FlxTypedGroup<Block>
 					if (!BlockList.BLOCK_LIST.contains(block?.block_id))
 						continue;
 
-					var old_block = new Block(block?.block_id, block?.x, block?.y);
+					var new_block = new Block(block?.block_id, block?.x, block?.y);
 					if (world_info.has_animated_blocks)
 					{
 						if (block?.frameIndex != null)
 						{
-							old_block.animation.play(old_block.animation.name, false, false, block.frameIndex);
-							old_block.animation.frameIndex = block.frameIndex;
+							new_block.animation.play(new_block.animation.name, false, false, block.frameIndex);
+							new_block.animation.frameIndex = block.frameIndex;
 						}
 					}
 					if (block?.variation_index != null)
 					{
-						old_block.variation_index = block.variation_index;
-						old_block.changeVariationIndex(0);
+						new_block.variation_index = block.variation_index;
+						new_block.changeVariationIndex(0);
 					}
-					add(old_block);
+
+					var can_be_added:Bool = true;
+
+					applyBlockChanges(block ->
+					{
+						if (block.overlaps(new_block) && can_be_added)
+						{
+							can_be_added = false;
+							overlap_count++;
+						}
+					});
+
+					if (can_be_added)
+						add(new_block);
 				}
+
+				trace('Removed ' + overlap_count + ' overlapping blocks');
 			}
 		}
+
+		saveWorldInfo(world_info, world_file_path);
 	}
 
 	public static function saveWorldInfo(world_info:WorldInfo, path:String)
