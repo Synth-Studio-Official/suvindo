@@ -15,6 +15,9 @@ Changes connected to the [new Request system changes](#requests-1)
     - Type: "regular"
 
 ## General
+- You now have to toggle between destroying and placing by pressing `SHIFT + ENTER`
+    - Removed `touching_kids` variable
+    - The Cursor block alpha will show if you're in placing or destorying mode via the opacity (lower = destroy)
 - You can now hold ENTER to place or destroy blocks (ultimate destruction hehehe)
 - Renamed "Below the minimum supported version number" to "Below the minimum supported pack number" in resource pack warnings
 - Added "Above the maximum supported pack number" as an option to resource pack warnings

@@ -50,7 +50,9 @@ Surely you're not just here to check out the code right?
 
 `GAMEPLAY` : F1 - Hide ALL UI
 
-`GAMEPLAY` : ENTER - Place / Break blocks (depending on if you're touching a block)
+`GAMEPLAY` : ENTER (holdable) - Place / Break blocks
+
+`GAMEPLAY` : SHIFT + ENTER - Toggle Place or Destroy mode
 
 `GAMEPLAY` : ESCAPE - Leave to Main Menu
 

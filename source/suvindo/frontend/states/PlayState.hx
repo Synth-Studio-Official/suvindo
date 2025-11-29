@@ -83,7 +83,6 @@ class PlayState extends FlxState
 		cursor_block.hsv_shader.saturation = 2;
 		cursor_block.x = 16 * ((FlxG.width / 16) / 2);
 		cursor_block.y = 16 * ((FlxG.height / 16) / 2);
-		cursor_block.alpha = .5;
 
 		debug_text = new FlxText(2, 2, 0, "version", 8);
 		add(debug_text);
@@ -167,11 +166,16 @@ class PlayState extends FlxState
 		});
 	}
 
-	var touching_kids:Bool = false; // thank god
+	var place_mode:Bool = true;
 
 	override public function update(elapsed:Float)
 	{
 		super.update(elapsed);
+
+		if (place_mode)
+			cursor_block.alpha = .75;
+		else
+			cursor_block.alpha = .25;
 
 		debug_text.text = "";
 		if (FlxG.keys.pressed.F3)
@@ -199,7 +203,7 @@ class PlayState extends FlxState
 			FlxG.switchState(() -> new MainMenu());
 		}
 
-		if (FlxG.keys.anyJustReleased([W, A, S, D, UP, LEFT, DOWN, RIGHT, ENTER, TAB, L]))
+		if (FlxG.keys.anyJustReleased([W, A, S, D, UP, LEFT, DOWN, RIGHT, ENTER, TAB, L, SHIFT]))
 		{
 			if (FlxG.keys.anyJustReleased([W, UP]))
 				cursor_block.y -= cursor_block.height;
@@ -220,14 +224,9 @@ class PlayState extends FlxState
 			if (cursor_block.y > FlxG.height - cursor_block.height / 2)
 				cursor_block.y = FlxG.height - cursor_block.height / 2;
 
-			if (FlxG.keys.justPressed.ENTER)
-				for (minor in blocks.members)
-					if (cursor_block.overlaps(minor))
-						touching_kids = true; // NOOOOOOOOOOOOOOOOOOO
-
-			if (FlxG.keys.pressed.ENTER)
+			if (FlxG.keys.pressed.ENTER && !FlxG.keys.pressed.SHIFT)
 			{
-				if (!touching_kids)
+				if (place_mode)
 				{
 					var new_block = new Block(cursor_block.block_id, cursor_block.x, cursor_block.y);
 					blocks.add(new_block);
@@ -248,6 +247,7 @@ class PlayState extends FlxState
 						}
 				}
 			}
+			else if (FlxG.keys.justReleased.ENTER && FlxG.keys.pressed.SHIFT) {}
 
 			if (FlxG.keys.justReleased.TAB)
 			{
