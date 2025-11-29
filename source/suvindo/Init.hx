@@ -1,5 +1,6 @@
 package suvindo;
 
+import suvindo.backend.UpdateUtil;
 import suvindo.backend.TrackManager;
 import suvindo.backend.ReloadPlugin;
 import suvindo.backend.resourcepacks.ResourcePacks;
@@ -48,6 +49,12 @@ class Init extends FlxState
 		TrackManager.MUSIC_RATE = VARIABLE;
 		#end
 
-		FlxG.switchState(MainMenu.new);
+		if (UpdateUtil.isOutdated())
+		{
+			trace('OUTDATED');
+			FlxG.switchState(MainMenu.new);
+		}
+		else
+			FlxG.switchState(MainMenu.new);
 	}
 }
