@@ -8,27 +8,23 @@ import flixel.FlxState;
 
 class Init extends FlxState
 {
+	public var reloadPluginReload = function()
+	{
+		ReloadPlugin.reload.add(ResourcePacks.reload);
+		ReloadPlugin.reload.add(RequestsManager.reload);
+		ReloadPlugin.reload.add(BlockList.reload);
+		ReloadPlugin.reload.add(TrackManager.reload);
+	};
+
 	override function create()
 	{
 		super.create();
 
 		FlxG.mouse.visible = false;
-        FlxG.sound.volumeUpKeys = [];
-        FlxG.sound.volumeDownKeys = [];
-		ReloadPlugin.baseReloadInit = () ->
-		{
-			ReloadPlugin.reload.add(ResourcePacks.reload);
-			ReloadPlugin.reload.add(RequestsManager.reload);
-			ReloadPlugin.reload.add(BlockList.reload);
-			ReloadPlugin.reload.add(TrackManager.reload);
-		}
-        ReloadPlugin.onReloadInit = () -> // make a duplicate to not reference the original lambda
-		{
-			ReloadPlugin.reload.add(ResourcePacks.reload);
-			ReloadPlugin.reload.add(RequestsManager.reload);
-			ReloadPlugin.reload.add(BlockList.reload);
-			ReloadPlugin.reload.add(TrackManager.reload);
-		}
+		FlxG.sound.volumeUpKeys = [];
+		FlxG.sound.volumeDownKeys = [];
+		ReloadPlugin.baseReloadInit = () -> reloadPluginReload;
+		ReloadPlugin.onReloadInit = () -> reloadPluginReload;
 		FlxG.plugins.addPlugin(new ReloadPlugin());
 
 		#if (MUSIC_RATE_OFF)
@@ -43,6 +39,6 @@ class Init extends FlxState
 		TrackManager.MUSIC_RATE = VARIABLE;
 		#end
 
-        FlxG.switchState(MainMenu.new);
+		FlxG.switchState(MainMenu.new);
 	}
 }
