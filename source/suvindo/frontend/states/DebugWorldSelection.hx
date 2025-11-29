@@ -1,5 +1,6 @@
-package suvindo;
+package suvindo.frontend.states;
 
+import suvindo.backend.resourcepacks.ResourcePacks;
 import flixel.FlxSprite;
 import flixel.FlxCamera;
 import flixel.FlxSubState;
