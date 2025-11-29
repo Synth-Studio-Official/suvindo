@@ -1,7 +1,5 @@
 package suvindo.backend.blocks;
 
-import haxe.crypto.Sha256;
-import lime.app.Application;
 import flixel.FlxG;
 import suvindo.backend.blocks.BlockJSON.BlockWorldData;
 import flixel.math.FlxPoint;
@@ -11,8 +9,6 @@ import sys.io.File;
 import lime.utils.Assets;
 import haxe.Json;
 import flixel.group.FlxGroup.FlxTypedGroup;
-
-using StringTools;
 
 class BlockGrid extends FlxTypedGroup<Block>
 {
@@ -93,7 +89,7 @@ class BlockGrid extends FlxTypedGroup<Block>
 		if (world_info != null)
 		{
 			clearBlocks();
-			saveWorldInfo(world_file_path);
+			saveWorldInfo(this.world_info, world_file_path);
 
 			if (world_info.blocks != null)
 			{
@@ -112,10 +108,10 @@ class BlockGrid extends FlxTypedGroup<Block>
 						block_world_data = cast block;
 					}
 					catch (_) {}
-					var block_string_data:String = null;
+					var block_int_data:Null<Int> = null;
 					try
 					{
-						block_string_data = cast block;
+						block_int_data = cast block;
 					}
 					catch (_) {}
 					var new_block:Block = null;
@@ -146,7 +142,7 @@ class BlockGrid extends FlxTypedGroup<Block>
 							new_block.changeVariationIndex(0);
 						}
 					}
-					else if (block_string_data != null)
+					else if (block_int_data != null)
 					{
 						i++;
 						x++;
@@ -157,20 +153,10 @@ class BlockGrid extends FlxTypedGroup<Block>
 							y++;
 						}
 
-						if (block_string_data.startsWith('0'))
-						{
-							x += Std.parseInt(block_string_data.split('_')[1]);
-
-							if (x > (FlxG.width / 16))
-							{
-								x = 0;
-								y++;
-							}
+						if (block_int_data == 0)
 							continue;
-						}
 
-						var converted_block_id:String = BlockList.BLOCK_LIST[Std.parseInt(block_string_data.split('_')[0]) - 1];
-						var amount = Std.parseInt(block_string_data.split('_')[1]);
+						var converted_block_id:String = BlockList.BLOCK_LIST[block_int_data - 1];
 
 						for (convert_block in RequestsManager.CONVERT.blocks)
 							if (convert_block.from == converted_block_id)
@@ -183,24 +169,13 @@ class BlockGrid extends FlxTypedGroup<Block>
 						if (!BlockList.BLOCK_LIST.contains(converted_block_id))
 							continue;
 
-						while (amount > 0)
-						{
-							new_block = new Block(converted_block_id, x * 16, y * 16);
+						new_block = new Block(converted_block_id, x * 16, y * 16);
 
-							if (world_info.variation_indexes != null)
-								for (variation in world_info.variation_indexes)
-									if (variation.i == i)
-										new_block.variation_index = variation.variation_index;
-							new_block.changeVariationIndex(0);
-
-							amount--;
-							x++;
-							if (x > (FlxG.width / 16))
-							{
-								x = 0;
-								y++;
-							}
-						}
+						if (world_info.variation_indexes != null)
+							for (variation in world_info.variation_indexes)
+								if (variation.i == i)
+									new_block.variation_index = variation.variation_index;
+						new_block.changeVariationIndex(0);
 					}
 
 					var can_be_added:Bool = true;
@@ -225,54 +200,13 @@ class BlockGrid extends FlxTypedGroup<Block>
 			}
 		}
 
-		saveWorldInfo(world_file_path);
+		saveWorldInfo(world_info, world_file_path);
 	}
 
-	public function saveWorldInfo(path:String, ?save_file:Bool = true)
+	public static function saveWorldInfo(world_info:WorldInfo, path:String)
 	{
-		var x = 0;
-		var y = 0;
-		var i = 0;
-
-		var amount = 0;
-
-		while (y < (FlxG.height / 16))
-		{
-			while (x < (FlxG.width / 16))
-			{
-				amount = 0;
-				i++;
-				x++;
-
-				var block_id = 0;
-
-				if (this.members != null)
-					for (block in this.members)
-					{
-						if (block.y == y * 16 && block.x >= x * 16)
-						{
-							amount++;
-
-							if (block.block_json?.type == "variations")
-								world_info.variation_indexes.push({i: i, variation_index: block.variation_index});
-
-							block_id = BlockList.BLOCK_LIST.indexOf(block.block_id);
-
-							if (block.graphic_path.contains("resources/"))
-								if (!world_info.resource_packs.contains(block.graphic_path.split("/")[1]))
-									world_info.resource_packs.push(block.graphic_path.split("/")[1]);
-						}
-					}
-				world_info.blocks.push(block_id + '_' + amount);
-			}
-
-			y++;
-			x = 0;
-		}
-
 		#if sys
-		if (save_file)
-			File.saveContent(path, Json.stringify(world_info, "\t"));
+		File.saveContent(path, Json.stringify(world_info, "\t"));
 		#end
 	}
 }
