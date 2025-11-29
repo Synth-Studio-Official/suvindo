@@ -103,6 +103,8 @@ class PlayState extends FlxState
 		FlxG.mouse.visible = false;
 
 		TrackManager.playTrack();
+
+		directional_timer = new FlxTimer();
 	}
 
 	public function saveWorldInfo(save_file:Bool = true)
@@ -168,6 +170,9 @@ class PlayState extends FlxState
 
 	var place_mode:Bool = true;
 
+	public var directional_timer:FlxTimer;
+	public var can_hold_directionals:Bool = false;
+
 	override public function update(elapsed:Float)
 	{
 		super.update(elapsed);
@@ -205,14 +210,40 @@ class PlayState extends FlxState
 
 		if (FlxG.keys.anyJustReleased([W, A, S, D, UP, LEFT, DOWN, RIGHT, ENTER, TAB, L, SHIFT]))
 		{
-			if (FlxG.keys.anyJustReleased([W, UP]))
-				cursor_block.y -= cursor_block.height;
-			if (FlxG.keys.anyJustReleased([A, LEFT]))
-				cursor_block.x -= cursor_block.width;
-			if (FlxG.keys.anyJustReleased([S, DOWN]))
-				cursor_block.y += cursor_block.height;
-			if (FlxG.keys.anyJustReleased([D, RIGHT]))
-				cursor_block.x += cursor_block.width;
+			if (!can_hold_directionals)
+			{
+				if (FlxG.keys.anyJustReleased([W, UP]))
+					cursor_block.y -= cursor_block.height;
+				if (FlxG.keys.anyJustReleased([A, LEFT]))
+					cursor_block.x -= cursor_block.width;
+				if (FlxG.keys.anyJustReleased([S, DOWN]))
+					cursor_block.y += cursor_block.height;
+				if (FlxG.keys.anyJustReleased([D, RIGHT]))
+					cursor_block.x += cursor_block.width;
+				if (FlxG.keys.anyJustReleased([W, A, S, D, UP, LEFT, DOWN, RIGHT]))
+				{
+					directional_timer.start(.1, t ->
+					{
+						can_hold_directionals = true;
+					});
+				}
+			}
+			else
+			{
+				if (FlxG.keys.anyJustReleased([W, A, S, D, UP, LEFT, DOWN, RIGHT]))
+					directional_timer.start(.1, t ->
+					{
+						can_hold_directionals = false;
+					});
+				if (FlxG.keys.anyPressed([W, UP]))
+					cursor_block.y -= cursor_block.height;
+				if (FlxG.keys.anyPressed([A, LEFT]))
+					cursor_block.x -= cursor_block.width;
+				if (FlxG.keys.anyPressed([S, DOWN]))
+					cursor_block.y += cursor_block.height;
+				if (FlxG.keys.anyPressed([D, RIGHT]))
+					cursor_block.x += cursor_block.width;
+			}
 
 			if (cursor_block.x < 0)
 				cursor_block.x = 0;
@@ -247,7 +278,8 @@ class PlayState extends FlxState
 						}
 				}
 			}
-			else if (FlxG.keys.justReleased.ENTER && FlxG.keys.pressed.SHIFT) {
+			else if (FlxG.keys.justReleased.ENTER && FlxG.keys.pressed.SHIFT)
+			{
 				place_mode = !place_mode;
 			}
 

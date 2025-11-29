@@ -36,7 +36,7 @@ Surely you're not just here to check out the code right?
 
 `MENUS` : S / Down Arrow Key - Move down
 
-`GAMEPLAY` : WASD / Arrow Keys - Move the cursor block
+`GAMEPLAY` : WASD / Arrow Keys (holdable) - Move the cursor block
 
 `GAMEPLAY` : TAB - Switch to the next block
 
