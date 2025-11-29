@@ -44,7 +44,7 @@ class Block extends FlxSprite
 	{
 		var path:String = ResourcePacks.getPath('images/' + (blocks_folder ? 'blocks/' : '') + block + '.' + ext);
 
-		for (block_path in RequestsManager.ADD.blocks)
+		for (block_path in RequestsManager.ADD?.blocks)
 			if (Path.withoutDirectory(block_path) == block)
 				path = ResourcePacks.getPath('images/' + block_path + '.' + ext);
 

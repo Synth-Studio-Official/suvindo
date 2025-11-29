@@ -23,7 +23,7 @@ class BlockList
 
 		#if sys
 		var blocksDir:Array<String> = ResourcePacks.readDirectory('images/blocks/');
-		for (block in RequestsManager.ADD.blocks)
+		for (block in RequestsManager.ADD?.blocks)
 		{
 			var path:String = ResourcePacks.getPath('images/' + block + '.png');
 			if (#if !sys Assets.exists #else FileSystem.exists #end (path))
@@ -38,7 +38,7 @@ class BlockList
 					BLOCK_LIST.push(list_entry);
 			}
 
-			if (RequestsManager.REMOVE.blocks.contains(list_entry))
+			if (RequestsManager.REMOVE?.blocks.contains(list_entry))
 				continue;
 
 			if (image.endsWith('.png') && !FileSystem.isDirectory(image) && !FileSystem.exists(image.replace('png', '.json')))

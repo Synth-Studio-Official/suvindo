@@ -31,7 +31,7 @@ class TrackManager
 		#if sys
 		var tracksDir:Array<String> = ResourcePacks.readDirectory('music/');
 		var requestedTracks:Map<String, String> = [];
-		for (track in RequestsManager.ADD.tracks)
+		for (track in RequestsManager.ADD?.tracks)
 		{
 			var path:String = ResourcePacks.getPath('music/' + track + '.wav');
 			trace(path);
@@ -54,7 +54,7 @@ class TrackManager
 					TRACKS_LIST.push(list_entry);
 			}
 
-			if (RequestsManager.REMOVE.tracks.contains(list_entry))
+			if (RequestsManager.REMOVE?.tracks.contains(list_entry))
 				continue;
 
 			if (track.endsWith('.wav') && !FileSystem.isDirectory(track))
