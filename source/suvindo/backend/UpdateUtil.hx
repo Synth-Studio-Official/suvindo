@@ -8,7 +8,12 @@ class UpdateUtil
 {
 	public static var VERSION_FILE_NAME:String = 'version.txt';
 	public static var VERSION_FILE_PATH:String = 'assets/data/' + VERSION_FILE_NAME;
-	public static var VERSION:String = Assets.getText(VERSION_FILE_PATH);
+	public static var VERSION(get, never):String;
+
+    static function get_VERSION():String
+    {
+        return Assets.getText(VERSION_FILE_PATH);
+    }
 
 	public static function isOutdated():Bool
 	{
