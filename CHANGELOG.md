@@ -15,7 +15,7 @@ Changes connected to the [new Request system changes](#requests-1)
     - Type: "regular"
 
 ## General
-- You can now hold directionals to move if you hold it for a bit
+- You can now hold directionals to move if you hold it for a bit at a quarter of the speed
 - You now have to toggle between destroying and placing by pressing `SHIFT + ENTER`
     - Removed `touching_kids` variable
     - The Cursor block alpha will show if you're in placing or destorying mode via the opacity (lower = destroy)

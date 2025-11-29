@@ -223,7 +223,7 @@ class PlayState extends FlxState
 					cursor_block.y += cursor_block.height;
 				if (FlxG.keys.anyJustReleased([D, RIGHT]))
 					cursor_block.x += cursor_block.width;
-				if (FlxG.keys.anyJustReleased([W, A, S, D, UP, LEFT, DOWN, RIGHT]))
+				if (FlxG.keys.anyJustPressed([W, A, S, D, UP, LEFT, DOWN, RIGHT]))
 				{
 					directional_timer.start(.1, t ->
 					{
@@ -233,19 +233,19 @@ class PlayState extends FlxState
 			}
 			else
 			{
-				if (FlxG.keys.anyJustReleased([W, A, S, D, UP, LEFT, DOWN, RIGHT]))
-					directional_timer.start(.1, t ->
+				if (FlxG.keys.anyPressed([W, A, S, D, UP, LEFT, DOWN, RIGHT]))
+					directional_timer.start(.5, t ->
 					{
 						can_hold_directionals = false;
 					});
 				if (FlxG.keys.anyPressed([W, UP]))
-					cursor_block.y -= cursor_block.height;
+					cursor_block.y -= cursor_block.height / 4;
 				if (FlxG.keys.anyPressed([A, LEFT]))
-					cursor_block.x -= cursor_block.width;
+					cursor_block.x -= cursor_block.width / 4;
 				if (FlxG.keys.anyPressed([S, DOWN]))
-					cursor_block.y += cursor_block.height;
+					cursor_block.y += cursor_block.height / 4;
 				if (FlxG.keys.anyPressed([D, RIGHT]))
-					cursor_block.x += cursor_block.width;
+					cursor_block.x += cursor_block.width / 4;
 			}
 
 			if (cursor_block.x < 0)
