@@ -1,4 +1,4 @@
-package suvindo;
+package suvindo.backend.blocks;
 
 typedef BlockJSON =
 {

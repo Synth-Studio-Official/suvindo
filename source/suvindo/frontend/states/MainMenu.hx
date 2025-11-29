@@ -96,14 +96,6 @@ class MainMenu extends FlxState
 		});
 		add(blocks);
 		add(texts);
-		ReloadPlugin.onReloadInit = () ->
-		{
-			ReloadPlugin.reload.add(ResourcePacks.reload);
-			ReloadPlugin.reload.add(RequestsManager.reload);
-			ReloadPlugin.reload.add(BlockList.reload);
-			ReloadPlugin.reload.add(TrackManager.reload);
-			ReloadPlugin.reload.add(TrackManager.playTrack);
-		}
 	}
 
 	override public function update(elapsed:Float)
@@ -132,6 +124,5 @@ class MainMenu extends FlxState
 	{
 		super.destroy();
 		FlxG.cameras.remove(menuCam);
-		ReloadPlugin.onReloadInit = ReloadPlugin.baseReloadInit;
 	}
 }

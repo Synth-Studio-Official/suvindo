@@ -1,4 +1,4 @@
-package suvindo;
+package suvindo.backend.blocks;
 
 import suvindo.Requests.RequestsManager;
 import sys.io.File;

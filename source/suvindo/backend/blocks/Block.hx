@@ -1,8 +1,8 @@
-package suvindo;
+package suvindo.backend.blocks;
 
 import haxe.io.Path;
 import suvindo.Requests.RequestsManager;
-import suvindo.BlockJSON.BlockVariation;
+import suvindo.backend.blocks.BlockJSON.BlockVariation;
 import flixel.system.FlxAssets.FlxGraphicAsset;
 import haxe.Json;
 #if sys

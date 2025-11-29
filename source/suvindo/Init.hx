@@ -1,5 +1,6 @@
 package suvindo;
 
+import suvindo.backend.blocks.BlockList;
 import suvindo.frontend.states.MainMenu;
 import suvindo.Requests.RequestsManager;
 import flixel.util.FlxTimer;
@@ -8,12 +9,13 @@ import flixel.FlxState;
 
 class Init extends FlxState
 {
-	public var reloadPluginReload = function()
+	public static var reloadPluginReload = function()
 	{
 		ReloadPlugin.reload.add(ResourcePacks.reload);
 		ReloadPlugin.reload.add(RequestsManager.reload);
 		ReloadPlugin.reload.add(BlockList.reload);
 		ReloadPlugin.reload.add(TrackManager.reload);
+		ReloadPlugin.reload.add(TrackManager.playTrack);
 	};
 
 	override function create()
