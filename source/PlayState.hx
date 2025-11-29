@@ -13,8 +13,8 @@ import haxe.crypto.Sha256;
 import sys.io.File;
 import sys.FileSystem;
 #end
-import suvindo.ResourcePackMenu;
-import suvindo.ResourcePacks;
+import suvindo.backend.resourcepacks.ResourcePackMenu;
+import suvindo.backend.resourcepacks.ResourcePacks;
 import suvindo.ReloadPlugin;
 import flixel.text.FlxText;
 import suvindo.backend.blocks.BlockList;

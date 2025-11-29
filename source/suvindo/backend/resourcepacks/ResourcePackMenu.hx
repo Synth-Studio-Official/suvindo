@@ -1,4 +1,4 @@
-package suvindo;
+package suvindo.backend.resourcepacks;
 
 import flixel.FlxSprite;
 import flixel.FlxCamera;
@@ -10,7 +10,7 @@ import flixel.util.FlxColor;
 import sys.io.File;
 #end
 import haxe.Json;
-import suvindo.ResourcePacks.ResourcePack;
+import suvindo.backend.resourcepacks.ResourcePacks.ResourcePack;
 import flixel.text.FlxText;
 import flixel.group.FlxGroup.FlxTypedGroup;
 

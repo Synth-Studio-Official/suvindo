@@ -1,4 +1,4 @@
-package suvindo;
+package suvindo.backend.resourcepacks;
 
 import lime.utils.Assets;
 import haxe.Json;

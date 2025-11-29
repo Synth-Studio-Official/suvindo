@@ -1,5 +1,6 @@
 package suvindo;
 
+import suvindo.backend.resourcepacks.ResourcePacks;
 import suvindo.Requests.RequestsManager;
 import sphis.any.VersionConverts;
 

@@ -1,5 +1,6 @@
 package suvindo.backend.blocks;
 
+import suvindo.backend.resourcepacks.ResourcePacks;
 import haxe.io.Path;
 import suvindo.Requests.RequestsManager;
 import suvindo.backend.blocks.BlockJSON.BlockVariation;

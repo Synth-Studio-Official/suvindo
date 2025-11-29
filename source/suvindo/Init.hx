@@ -1,5 +1,6 @@
 package suvindo;
 
+import suvindo.backend.resourcepacks.ResourcePacks;
 import suvindo.backend.blocks.BlockList;
 import suvindo.frontend.states.MainMenu;
 import suvindo.Requests.RequestsManager;
