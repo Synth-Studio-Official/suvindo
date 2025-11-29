@@ -49,6 +49,8 @@ class Init extends FlxState
 		TrackManager.MUSIC_RATE = VARIABLE;
 		#end
 
+		FlxG.mouse.enabled = false;
+
 		if (UpdateUtil.isOutdated())
 		{
 			trace('OUTDATED');

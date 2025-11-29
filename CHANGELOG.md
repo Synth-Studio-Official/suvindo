@@ -40,6 +40,7 @@ Changes connected to the [new Request system changes](#requests-1)
 - The Resource Pack menu doesn't play music when loaded unless reloading
 
 ## General
+- Disabled FlxG mouse
 - Reloading calls for a track to play
 - Code organization has been implemented
 - Fixed `MUSIC_RATE` compiler flags
