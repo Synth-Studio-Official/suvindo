@@ -176,9 +176,13 @@ class PlayState extends FlxState
 
 	var controls:Array<FlxKey> = [W, A, S, D, UP, LEFT, DOWN, RIGHT, ENTER, TAB, L, SHIFT];
 
+	var tick:Int = 0;
+
 	override public function update(elapsed:Float)
 	{
 		super.update(elapsed);
+
+		tick++;
 
 		if (place_mode)
 			cursor_block.alpha = .75;
@@ -199,6 +203,7 @@ class PlayState extends FlxState
 			else
 				debug_text.text += "\nNone";
 			debug_text.text += "\n\nTime until next autosave (seconds): " + Std.int(autosave_timer.timeLeft);
+			debug_text.text += "\n\nTick: " + tick;
 		}
 
 		cursor_block.visible = !FlxG.keys.pressed.F1;
@@ -225,9 +230,10 @@ class PlayState extends FlxState
 					cursor_block.x += cursor_block.width;
 				if (FlxG.keys.anyJustPressed([W, A, S, D, UP, LEFT, DOWN, RIGHT]))
 				{
-					directional_timer.start(.1, t ->
+					directional_timer.start(.2, t ->
 					{
-						can_hold_directionals = true;
+						if (FlxG.keys.anyPressed([W, A, S, D, UP, LEFT, DOWN, RIGHT]))
+							can_hold_directionals = true;
 					});
 				}
 			}
@@ -238,14 +244,18 @@ class PlayState extends FlxState
 					{
 						can_hold_directionals = false;
 					});
-				if (FlxG.keys.anyPressed([W, UP]))
-					cursor_block.y -= cursor_block.height / 2;
-				if (FlxG.keys.anyPressed([A, LEFT]))
-					cursor_block.x -= cursor_block.width / 2;
-				if (FlxG.keys.anyPressed([S, DOWN]))
-					cursor_block.y += cursor_block.height / 2;
-				if (FlxG.keys.anyPressed([D, RIGHT]))
-					cursor_block.x += cursor_block.width / 2;
+
+				if (tick % 4 == 0)
+				{
+					if (FlxG.keys.anyPressed([W, UP]))
+						cursor_block.y -= cursor_block.height;
+					if (FlxG.keys.anyPressed([A, LEFT]))
+						cursor_block.x -= cursor_block.width;
+					if (FlxG.keys.anyPressed([S, DOWN]))
+						cursor_block.y += cursor_block.height;
+					if (FlxG.keys.anyPressed([D, RIGHT]))
+						cursor_block.x += cursor_block.width;
+				}
 			}
 
 			if (cursor_block.x < 0)
