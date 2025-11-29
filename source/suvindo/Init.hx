@@ -25,7 +25,7 @@ class Init extends FlxState
 		super.create();
 
 		FlxG.mouse.visible = false;
-		
+
 		#if !VOLUME_KEYS
 		FlxG.sound.volumeUpKeys = [];
 		FlxG.sound.volumeDownKeys = [];

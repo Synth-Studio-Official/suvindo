@@ -34,14 +34,20 @@ class MainMenu extends FlxState
 		TrackManager.playTrack();
 		selections = [
 			{name: '__LOGO__', onPress: () -> {}},
-			{name: 'Play', onPress: () ->
 			{
-				openSubState(new DebugWorldSelection(menuCam));
-			}},
-			{name: 'Resource Packs', onPress: () ->
+				name: 'Play',
+				onPress: () ->
+				{
+					openSubState(new DebugWorldSelection(menuCam));
+				}
+			},
 			{
-				openSubState(new ResourcePackMenu(menuCam));
-			}}
+				name: 'Resource Packs',
+				onPress: () ->
+				{
+					openSubState(new ResourcePackMenu(menuCam));
+				}
+			}
 		];
 
 		menuCam = new FlxCamera(0, 0, FlxG.width, FlxG.height);
@@ -99,7 +105,6 @@ class MainMenu extends FlxState
 		add(blocks);
 		add(texts);
 
-		
 		var version_text = new FlxText(2, 2, 0, 'version', 8);
 		version_text.text = lime.app.Application.current.meta.get('version') + #if debug ' [PROTOTYPE]' #else '' #end;
 		add(version_text);

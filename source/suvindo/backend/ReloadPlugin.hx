@@ -7,7 +7,7 @@ import flixel.FlxBasic;
 class ReloadPlugin extends FlxBasic
 {
 	public static var reload:FlxSignal;
-    public static var baseReloadInit:() -> Void = () -> {};
+	public static var baseReloadInit:() -> Void = () -> {};
 	public static var onReloadInit:() -> Void = () -> {};
 
 	public static var canReload:Bool = true;
@@ -28,7 +28,7 @@ class ReloadPlugin extends FlxBasic
 		reload.dispatch();
 	}
 
-    public static function fullReload()
+	public static function fullReload()
 	{
 		reload.removeAll();
 		onReloadInit();

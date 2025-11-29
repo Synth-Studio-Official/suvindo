@@ -23,19 +23,20 @@ class ResourcePackMenu extends FlxSubState
 	public var curSelected:Int = 0;
 	public var packTexts:FlxTypedGroup<FlxText>;
 	public var camFollow:FlxObject;
-  
-	override public function new(cam:FlxCamera) {
-        super();
-        camera = cam;
-    }
+
+	override public function new(cam:FlxCamera)
+	{
+		super();
+		camera = cam;
+	}
 
 	override function create()
 	{
 		super.create();
-        var bg = new FlxSprite(0, -(FlxG.height / 2)).makeGraphic(FlxG.width, FlxG.height * 3, 0xAA000000);
-        add(bg);
+		var bg = new FlxSprite(0, -(FlxG.height / 2)).makeGraphic(FlxG.width, FlxG.height * 3, 0xAA000000);
+		add(bg);
 		bg.scrollFactor.set();
-		
+
 		packList = ResourcePacks.RESOURCE_PACKS.copy();
 		literalPackList = [];
 
@@ -141,8 +142,8 @@ class ResourcePackMenu extends FlxSubState
 		if (FlxG.keys.justReleased.ESCAPE)
 		{
 			saveEnabledRP();
-            ReloadPlugin.reload.dispatch();
-            close();
+			ReloadPlugin.reload.dispatch();
+			close();
 		}
 	}
 
