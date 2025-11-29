@@ -265,8 +265,8 @@ class PlayState extends FlxState
 
 			if (cursor_block.y < 0)
 				cursor_block.y = 0;
-			if (cursor_block.y > FlxG.height - cursor_block.height / 2)
-				cursor_block.y = FlxG.height - cursor_block.height / 2;
+			if (cursor_block.y > FlxG.height - cursor_block.height)
+				cursor_block.y = FlxG.height - cursor_block.height;
 
 			if (FlxG.keys.pressed.ENTER && !FlxG.keys.pressed.SHIFT)
 			{

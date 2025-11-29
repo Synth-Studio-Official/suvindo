@@ -15,6 +15,7 @@ Changes connected to the [new Request system changes](#requests-1)
     - Type: "regular"
 
 ## General
+- Fixed cursor block getting out of sync with the grid
 - New F3 Debug text entry: `tick`
 - You can now hold directionals to move if you hold it for a bit and move every 4 ticks
 - You now have to toggle between destroying and placing by pressing `SHIFT + ENTER`
