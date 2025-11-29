@@ -1,6 +1,5 @@
 package suvindo.backend.blocks;
 
-import suvindo.backend.WorldInfo.WorldInfoClass;
 import flixel.FlxG;
 import haxe.crypto.Sha256;
 import flixel.math.FlxPoint;
@@ -65,13 +64,13 @@ class BlockGrid extends FlxTypedGroup<Block>
 
 		members = [];
 
-		world_info = WorldInfoClass.getDefaultWorldInfo();
-
 		if (world_file_path != null)
 			loadWorld(world_file_path);
 
 		this.x = x;
 		this.y = y;
+
+		world_info.random_id = (world_info?.random_id ?? null) ?? Sha256.encode("" + FlxG.random.int(0, 255));
 	}
 
 	public function clearBlocks()
@@ -149,8 +148,7 @@ class BlockGrid extends FlxTypedGroup<Block>
 
 	public function saveWorldInfo(path:String, save_file:Bool = true)
 	{
-		if (world_info == null) world_info = WorldInfoClass.getDefaultWorldInfo();
-
+		world_info.game_version = UpdateUtil.VERSION + #if debug " [PROTOTYPE]" #else "" #end;
 		world_info.blocks = [];
 		world_info.resource_packs = [];
 

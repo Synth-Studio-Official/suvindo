@@ -41,27 +41,29 @@ class PlayState extends FlxState
 
 		if (world != null)
 		{
-			if (
-				#if sys
-				FileSystem
-				#else
-				Assets
-				#end
-				.exists("assets/saves/" + world + ".json"))
-				blocks = new BlockGrid("assets/saves/" + world + ".json");
-			else
+			#if sys
+			if (FileSystem.exists("assets/saves/" + world + ".json"))
+			#else
+			if (Assets.exists("assets/saves/" + world + ".json"))
+			#end
 			{
-				blocks = new BlockGrid(null);
-				blocks.world_info.world_name = world;
+				blocks = new BlockGrid("assets/saves/" + world + ".json");
+				WORLD_NAME = blocks.world_info.world_name;
 			}
+		else
+		{
+			WORLD_NAME = world;
+			saveWorldInfo();
+		}
 		}
 		else
+		{
 			blocks = new BlockGrid(null);
+		}
 		autosave_timer = new FlxTimer().start(60 * 1, t ->
 		{
 			saveWorldInfo(true);
 		}, 0);
-		WORLD_NAME = blocks.world_info.world_name;
 		trace("World name: " + WORLD_NAME);
 	}
 
@@ -102,7 +104,9 @@ class PlayState extends FlxState
 
 	public function saveWorldInfo(save_file:Bool = true)
 	{
-		if (cursor_block != null && blocks?.world_info != null)
+		blocks.world_info.world_name = WORLD_NAME ?? ((blocks.world_info?.world_name ?? null) ?? null);
+	
+		if (cursor_block != null)
 			blocks.world_info.cursor_block = {
 				x: cursor_block.x,
 				y: cursor_block.y,
@@ -114,18 +118,8 @@ class PlayState extends FlxState
 			FileSystem.createDirectory("assets/saves");
 		#end
 
-		if (WORLD_NAME != null)
-			blocks.world_info.world_name = WORLD_NAME;
-		else if (blocks?.world_info?.world_name != null)
-			blocks.world_info.world_name = blocks?.world_info?.world_name;
-		else if (blocks?.world_info?.random_id != null)
-			blocks.world_info.world_name = blocks?.world_info.random_id;
-		else
-			blocks.world_info.world_name = WorldInfoClass.getDefaultWorldInfo().world_name;
-		if (save_file && blocks != null)
-			blocks.saveWorldInfo("assets/saves/"
-				+ ((blocks?.world_info?.world_name ?? null) ?? "world_" + blocks?.world_info?.random_id)
-				+ ".json", save_file);
+		if (save_file)
+			blocks.saveWorldInfo("assets/saves/" + ((blocks.world_info?.world_name ?? null) ?? "world_" + blocks.world_info.random_id) + ".json", save_file);
 	}
 
 	public function onReload()
