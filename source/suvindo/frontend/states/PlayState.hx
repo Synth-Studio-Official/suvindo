@@ -1,4 +1,4 @@
-package;
+package suvindo.frontend.states;
 
 import suvindo.backend.blocks.BlockGrid;
 import suvindo.TrackManager;
@@ -13,7 +13,7 @@ import haxe.crypto.Sha256;
 import sys.io.File;
 import sys.FileSystem;
 #end
-import suvindo.backend.resourcepacks.ResourcePackMenu;
+import suvindo.frontend.states.ResourcePackMenu;
 import suvindo.backend.resourcepacks.ResourcePacks;
 import suvindo.ReloadPlugin;
 import flixel.text.FlxText;

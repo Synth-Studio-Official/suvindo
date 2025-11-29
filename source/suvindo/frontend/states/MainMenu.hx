@@ -1,6 +1,6 @@
 package suvindo.frontend.states;
 
-import suvindo.backend.resourcepacks.ResourcePackMenu;
+import suvindo.frontend.states.ResourcePackMenu;
 import suvindo.backend.resourcepacks.ResourcePacks;
 import suvindo.backend.blocks.BlockGrid;
 import suvindo.Requests.RequestsManager;
