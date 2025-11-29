@@ -4,6 +4,7 @@ import suvindo.backend.resourcepacks.ResourcePacks;
 import flixel.FlxSprite;
 import flixel.FlxCamera;
 import flixel.FlxSubState;
+import suvindo.backend.ReloadPlugin;
 import flixel.FlxObject;
 import flixel.FlxG;
 import flixel.util.FlxColor;

@@ -1,5 +1,7 @@
-package suvindo;
+package suvindo.backend;
 
+import suvindo.frontend.states.DebugWorldSelection;
+import suvindo.backend.resourcepacks.ResourcePacks;
 import lime.utils.Assets;
 import flixel.math.FlxMath;
 import flixel.sound.FlxSound;
@@ -9,7 +11,7 @@ import haxe.io.Path;
 #if sys
 import sys.FileSystem;
 #end
-import suvindo.Requests.RequestsManager;
+import suvindo.backend.Requests.RequestsManager;
 
 using StringTools;
 

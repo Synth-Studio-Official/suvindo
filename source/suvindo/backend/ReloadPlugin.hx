@@ -1,4 +1,4 @@
-package suvindo;
+package suvindo.backend;
 
 import flixel.util.FlxSignal;
 import flixel.FlxG;

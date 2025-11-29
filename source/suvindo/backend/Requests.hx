@@ -1,5 +1,6 @@
-package suvindo;
+package suvindo.backend;
 
+import suvindo.backend.resourcepacks.ResourcePacks;
 import sys.io.File;
 import haxe.Json;
 

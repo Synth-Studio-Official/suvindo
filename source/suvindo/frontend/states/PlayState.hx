@@ -1,8 +1,8 @@
 package suvindo.frontend.states;
 
 import suvindo.backend.blocks.BlockGrid;
-import suvindo.TrackManager;
-import suvindo.WorldInfo;
+import suvindo.backend.TrackManager;
+import suvindo.backend.WorldInfo;
 import flixel.util.FlxTimer;
 import lime.app.Application;
 import lime.utils.Assets;
@@ -14,7 +14,7 @@ import sys.FileSystem;
 #end
 import suvindo.frontend.states.ResourcePackMenu;
 import suvindo.backend.resourcepacks.ResourcePacks;
-import suvindo.ReloadPlugin;
+import suvindo.backend.ReloadPlugin;
 import flixel.text.FlxText;
 import suvindo.backend.blocks.BlockList;
 import flixel.FlxG;

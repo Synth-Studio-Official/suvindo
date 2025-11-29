@@ -1,4 +1,4 @@
-package suvindo;
+package suvindo.backend;
 
 import flixel.FlxG;
 import flixel.text.FlxInputText;

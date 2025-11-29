@@ -1,7 +1,7 @@
-package suvindo;
+package suvindo.backend;
 
 import suvindo.backend.resourcepacks.ResourcePacks;
-import suvindo.Requests.RequestsManager;
+import suvindo.backend.Requests.RequestsManager;
 import sphis.any.VersionConverts;
 
 using StringTools;

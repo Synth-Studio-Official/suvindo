@@ -1,10 +1,13 @@
 package suvindo.frontend.states;
 
+import suvindo.backend.WorldInfo;
+import suvindo.backend.FlxInputTextUtil;
 import suvindo.backend.resourcepacks.ResourcePacks;
 import flixel.FlxSprite;
 import flixel.FlxCamera;
+import suvindo.backend.ReloadPlugin;
 import flixel.FlxSubState;
-import suvindo.WorldInfo.WorldInfoClass;
+import suvindo.backend.WorldInfo.WorldInfoClass;
 import flixel.text.FlxInputText;
 import haxe.io.Path;
 import flixel.FlxObject;
@@ -23,21 +26,24 @@ class DebugWorldSelection extends FlxSubState
 {
 	public var worldList:Array<String> = [];
 	public var curSelected:Int = 0;
+
 	public static var saved_selected:Int = 0;
+
 	public var worldTexts:FlxTypedGroup<FlxText>;
 	public var camFollow:FlxObject;
 	public var worldName:FlxInputText;
 
-    override public function new(cam:FlxCamera) {
-        super();
-        camera = cam;
-    }
+	override public function new(cam:FlxCamera)
+	{
+		super();
+		camera = cam;
+	}
 
 	override function create()
 	{
 		super.create();
-        var bg = new FlxSprite(0, -(FlxG.height / 2)).makeGraphic(FlxG.width, FlxG.height * 3, 0xAA000000);
-        add(bg);
+		var bg = new FlxSprite(0, -(FlxG.height / 2)).makeGraphic(FlxG.width, FlxG.height * 3, 0xAA000000);
+		add(bg);
 		worldList = [null];
 
 		curSelected = saved_selected;
@@ -87,7 +93,7 @@ class DebugWorldSelection extends FlxSubState
 		for (world_id in worldList)
 		{
 			var world_txt:FlxText = new FlxText(2, 2, FlxG.width / 2, world_id ?? "New world", 32);
-            world_txt.font = ResourcePacks.getPath('fonts/ui_font.ttf');
+			world_txt.font = ResourcePacks.getPath('fonts/ui_font.ttf');
 			worldTexts.add(world_txt);
 			world_txt.ID = i;
 			if (world_txt.ID == curSelected)
@@ -99,7 +105,7 @@ class DebugWorldSelection extends FlxSubState
 		camera.y = camFollow.y;
 
 		worldName = FlxInputTextUtil.createInputText(null, "World Name");
-        worldName.font = ResourcePacks.getPath('fonts/ui_font.ttf');
+		worldName.font = ResourcePacks.getPath('fonts/ui_font.ttf');
 		worldName.scrollFactor.set();
 		add(worldName);
 
@@ -118,14 +124,16 @@ class DebugWorldSelection extends FlxSubState
 	}
 
 	public var worldInfo:FlxText;
-    public var fCnt:Int = 0;
+	public var fCnt:Int = 0;
+
 	override function update(elapsed:Float)
 	{
 		super.update(elapsed);
-        if (fCnt != 2){
-            fCnt++;
-            return;
-        }
+		if (fCnt != 2)
+		{
+			fCnt++;
+			return;
+		}
 		ReloadPlugin.canReload = !worldName.hasFocus;
 
 		worldInfo.text = '';
@@ -198,9 +206,9 @@ class DebugWorldSelection extends FlxSubState
 			}
 		}
 
-        if (FlxG.keys.justPressed.ESCAPE)
-        {
-            close();
-        }
+		if (FlxG.keys.justPressed.ESCAPE)
+		{
+			close();
+		}
 	}
 }
