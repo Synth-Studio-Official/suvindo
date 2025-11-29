@@ -78,7 +78,7 @@ class MainMenu extends FlxState
 			lSelY += 100;
 		}
 
-		blocks = new BlockGrid(ResourcePacks.getPath('data/ui/mainMenuWorld.json'));
+		blocks = new BlockGrid(ResourcePacks.getPath('data/menuWorld.json'));
 		blocks.camera = menuCam;
 		blocks.y -= texts.members[texts.members.length - 1].y - (FlxG.height / 2.5);
 		var highestY:Float = Math.POSITIVE_INFINITY;
