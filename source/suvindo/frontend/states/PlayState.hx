@@ -224,7 +224,7 @@ class PlayState extends FlxState
 				if (cursor_block.overlaps(minor))
 					touching_kids = true; // NOOOOOOOOOOOOOOOOOOO
 
-			if (FlxG.keys.justReleased.ENTER)
+			if (FlxG.keys.pressed.ENTER)
 			{
 				if (!touching_kids)
 				{

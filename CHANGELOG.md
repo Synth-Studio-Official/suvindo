@@ -15,6 +15,7 @@ Changes connected to the [new Request system changes](#requests-1)
     - Type: "regular"
 
 ## General
+- You can now hold ENTER to place or destroy blocks (ultimate destruction hehehe)
 - Renamed "Below the minimum supported version number" to "Below the minimum supported pack number" in resource pack warnings
 - Added "Above the maximum supported pack number" as an option to resource pack warnings
 - **ADDED MAIN MENU**
