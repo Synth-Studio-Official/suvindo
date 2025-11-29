@@ -1,5 +1,6 @@
 package suvindo.frontend.states;
 
+import flixel.input.keyboard.FlxKey;
 import suvindo.backend.blocks.BlockGrid;
 import suvindo.backend.TrackManager;
 import suvindo.backend.WorldInfo;
@@ -172,6 +173,8 @@ class PlayState extends FlxState
 
 	public var directional_timer:FlxTimer;
 	public var can_hold_directionals:Bool = false;
+	
+	var controls:Array<FlxKey> = [W, A, S, D, UP, LEFT, DOWN, RIGHT, ENTER, TAB, L, SHIFT];
 
 	override public function update(elapsed:Float)
 	{
@@ -208,7 +211,7 @@ class PlayState extends FlxState
 			FlxG.switchState(() -> new MainMenu());
 		}
 
-		if (FlxG.keys.anyJustReleased([W, A, S, D, UP, LEFT, DOWN, RIGHT, ENTER, TAB, L, SHIFT]))
+		if (FlxG.keys.anyPressed(controls) || FlxG.keys.anyJustReleased(controls))
 		{
 			if (!can_hold_directionals)
 			{
