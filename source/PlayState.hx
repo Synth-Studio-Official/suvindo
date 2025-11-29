@@ -1,6 +1,6 @@
 package;
 
-import suvindo.BlockGrid;
+import suvindo.backend.blocks.BlockGrid;
 import suvindo.TrackManager;
 import suvindo.WorldInfo;
 import suvindo.DebugWorldSelection;
@@ -17,9 +17,9 @@ import suvindo.ResourcePackMenu;
 import suvindo.ResourcePacks;
 import suvindo.ReloadPlugin;
 import flixel.text.FlxText;
-import suvindo.BlockList;
+import suvindo.backend.blocks.BlockList;
 import flixel.FlxG;
-import suvindo.Block;
+import suvindo.backend.blocks.Block;
 import flixel.FlxState;
 
 using StringTools;
