@@ -11,7 +11,7 @@ import flixel.FlxState;
 
 class Init extends FlxState
 {
-	public static var reloadPluginReload = function()
+	public static var reloadPluginReload:Void->Void = function()
 	{
 		ReloadPlugin.reload.add(ResourcePacks.reload);
 		ReloadPlugin.reload.add(RequestsManager.reload);
@@ -27,8 +27,8 @@ class Init extends FlxState
 		FlxG.mouse.visible = false;
 		FlxG.sound.volumeUpKeys = [];
 		FlxG.sound.volumeDownKeys = [];
-		ReloadPlugin.baseReloadInit = () -> reloadPluginReload;
-		ReloadPlugin.onReloadInit = () -> reloadPluginReload;
+		ReloadPlugin.baseReloadInit = () -> reloadPluginReload();
+		ReloadPlugin.onReloadInit = () -> reloadPluginReload();
 		FlxG.plugins.addPlugin(new ReloadPlugin());
 
 		#if (MUSIC_RATE_OFF)
