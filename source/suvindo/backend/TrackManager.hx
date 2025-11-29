@@ -90,7 +90,13 @@ class TrackManager
 		if (TRACKS_LIST.length == 0)
 			return;
 
-		var track = ResourcePacks.getPath("music/" + TRACKS_LIST[FlxG.random.int(0, TRACKS_LIST.length - 1)] + ".wav");
+		var track_filename = TRACKS_LIST[FlxG.random.int(0, TRACKS_LIST.length - 1)];
+		for (track in RequestsManager.CONVERT.tracks)
+		{
+			if (track.from == track_filename)
+				track_filename = track.to;
+		}
+		var track = ResourcePacks.getPath("music/" + track_filename + ".wav");
 
 		#if sys
 		if (!FileSystem.exists(track))
