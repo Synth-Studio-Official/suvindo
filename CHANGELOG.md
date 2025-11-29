@@ -15,6 +15,8 @@ Changes connected to the [new Request system changes](#requests-1)
     - Type: "regular"
 
 ## General
+- Renamed "Below the minimum supported version number" to "Below the minimum supported pack number" in resource pack warnings
+- Added "Above the maximum supported pack number" as an option to resource pack warnings
 - **ADDED MAIN MENU**
 - Changed size of pack info in the resource pack menu
 - Changed size of world info text in the world select menu
