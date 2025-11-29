@@ -1,20 +1,5 @@
 package suvindo.backend.blocks;
 
-typedef BlockWorldData =
-{
-	x:Float,
-	y:Float,
-	block_id:String,
-
-	?frame_index:Int,
-	?variation_index:Int,
-}
-
-typedef BlockWorldInfoV2VariationData = {
-	i:Int,
-	variation_index:Int,
-}
-
 typedef BlockJSON =
 {
 	var ?variations:Array<BlockVariation>;

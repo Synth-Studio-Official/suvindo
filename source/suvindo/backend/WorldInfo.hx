@@ -1,8 +1,5 @@
 package suvindo.backend;
 
-import suvindo.backend.blocks.BlockJSON.BlockWorldInfoV2VariationData;
-import flixel.util.typeLimit.OneOfTwo;
-import suvindo.backend.blocks.BlockJSON.BlockWorldData;
 import suvindo.backend.resourcepacks.ResourcePacks;
 import sphis.any.VersionConverts;
 
@@ -10,11 +7,9 @@ using StringTools;
 
 typedef WorldInfo =
 {
-	?cursor_block:BlockWorldData,
-	
-	?blocks:Array<OneOfTwo<BlockWorldData, Int>>,
-	?variation_indexes:Array<BlockWorldInfoV2VariationData>,
-
+	?cursor_block:{x:Float, y:Float, block_id:String},
+	?blocks:Array<Dynamic>,
+	?has_animated_blocks:Bool,
 	random_id:String,
 	?world_name:String,
 	game_version:String,
@@ -23,7 +18,7 @@ typedef WorldInfo =
 
 class WorldInfoClass
 {
-	public static var MIN_WORLD_VERSION:String = "0.3.0";
+	public static var MIN_WORLD_VERSION:String = "0.2.0";
 	public static var MAX_WORLD_VERSION:String = "0.4.0";
 
 	public static function getWorldWarnings(world_info:WorldInfo):String
@@ -38,10 +33,10 @@ class WorldInfoClass
 		var version_single_int = VersionConverts.convertToInt(world_info.game_version);
 
 		if (version_single_int < VersionConverts.convertToInt(MIN_WORLD_VERSION))
-			add_warning("Using old world format // Playing will attempt to convert");
+			add_warning("Below the minimum supported world version");
 
 		if (version_single_int > VersionConverts.convertToInt(MAX_WORLD_VERSION))
-			add_warning("Using a new world format // Playing can not convert");
+			add_warning("Above the maximum supported world version");
 
 		if (world_info.game_version.toLowerCase().contains("[prototype]"))
 			add_warning("Prototype version!");
