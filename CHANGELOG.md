@@ -1,5 +1,7 @@
 # 0.3.0 - 11/28/2025
 ## Resource Packs
+- Renamed "Below the minimum supported version number" to "Below the minimum supported pack number" in resource pack warnings
+- Added "Above the maximum supported pack number" as an option to resource pack warnings
 Changes connected to the [new Request system changes](#requests-1)
 - The resource `pack_version` is now `4`
     - Version `1`, `2`, and `3` are still supported
@@ -14,7 +16,7 @@ Changes connected to the [new Request system changes](#requests-1)
 - Added "Cactus" block
     - Type: "regular"
 
-## General
+## Gameplay
 - Fixed cursor block getting out of sync with the grid
 - New F3 Debug text entry: `tick`
 - You can now hold directionals to move if you hold it for a bit and move every 4 ticks
@@ -22,8 +24,10 @@ Changes connected to the [new Request system changes](#requests-1)
     - Removed `touching_kids` variable
     - The Cursor block alpha will show if you're in placing or destorying mode via the opacity (lower = destroy)
 - You can now hold ENTER to place or destroy blocks (ultimate destruction hehehe)
-- Renamed "Below the minimum supported version number" to "Below the minimum supported pack number" in resource pack warnings
-- Added "Above the maximum supported pack number" as an option to resource pack warnings
+- Gameplay now calls for tracks to play
+- Added `F1` Keybind : Hides **ALL** UI
+
+## Menus
 - **ADDED MAIN MENU**
 - Changed size of pack info in the resource pack menu
 - Changed size of world info text in the world select menu
@@ -32,10 +36,11 @@ Changes connected to the [new Request system changes](#requests-1)
 - Moved Game version watermark text to Main Menu
 - PlayState watermark (now debug) text is now F3-only
 - Loaded worlds are now auto-updated once loaded
+- The Resource Pack menu doesn't play music when loaded unless reloading
+
+## General
+- Reloading calls for a track to play
 - Code organization has been implemented
-- Gameplay now calls for tracks to play
-- Removed ability for the Resource Pack menu to play music
-- Added `F1` Keybind : Hides **ALL** UI
 - Fixed `MUSIC_RATE` compiler flags
     - Instead of `MUSIC_RATE=` it is now:
         - `MUSIC_RATE_OFF`
