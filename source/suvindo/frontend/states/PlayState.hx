@@ -247,7 +247,9 @@ class PlayState extends FlxState
 						}
 				}
 			}
-			else if (FlxG.keys.justReleased.ENTER && FlxG.keys.pressed.SHIFT) {}
+			else if (FlxG.keys.justReleased.ENTER && FlxG.keys.pressed.SHIFT) {
+				place_mode = !place_mode;
+			}
 
 			if (FlxG.keys.justReleased.TAB)
 			{
