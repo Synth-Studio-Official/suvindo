@@ -139,7 +139,7 @@ class ResourcePackMenu extends FlxSubState
 		if (FlxG.keys.justReleased.ESCAPE)
 		{
 			saveEnabledRP();
-            ReloadPlugin.fullReload();
+            ReloadPlugin.reload.dispatch();
             close();
 		}
 	}
