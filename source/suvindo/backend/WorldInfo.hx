@@ -41,6 +41,9 @@ class WorldInfoClass
 		if (world_info.game_version.toLowerCase().contains("[prototype]"))
 			add_warning("Prototype version!");
 
+		if (world_info.blocks.length >= 57600)
+			add_warning("Large world! Expect lag");
+
 		var missing_resource_packs:Array<String> = [];
 		for (pack in (world_info?.resource_packs ?? []))
 		{
