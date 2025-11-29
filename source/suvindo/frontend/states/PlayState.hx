@@ -153,8 +153,7 @@ class PlayState extends FlxState
 		#end
 
 		if (save_file)
-			BlockGrid.saveWorldInfo(world_info,
-				'assets/saves/' + ((world_info?.world_name ?? null) ?? 'world_' + world_info.random_id) + '.json');
+			BlockGrid.saveWorldInfo(world_info, 'assets/saves/' + ((world_info?.world_name ?? null) ?? 'world_' + world_info.random_id) + '.json');
 	}
 
 	public function onReload()
@@ -171,13 +170,13 @@ class PlayState extends FlxState
 	override public function update(elapsed:Float)
 	{
 		super.update(elapsed);
-		
-			debug_text.text = '';
+
+		debug_text.text = '';
 		if (FlxG.keys.pressed.F3)
 		{
 			debug_text.text += 'Current Block ID: ' + cursor_block.block_id;
-		debug_text.text += '\nCurrent Block Variation: '
-			+ ((cursor_block.variations.length > 0) ? cursor_block.variations[cursor_block.variation_index]?.id : 'default');
+			debug_text.text += '\nCurrent Block Variation: '
+				+ ((cursor_block.variations.length > 0) ? cursor_block.variations[cursor_block.variation_index]?.id : 'default');
 
 			debug_text.text += '\n\nResource packs:';
 			if (ResourcePacks.RESOURCE_PACKS.length > 0)
@@ -191,16 +190,11 @@ class PlayState extends FlxState
 		cursor_block.visible = !FlxG.keys.pressed.F1;
 		debug_text.visible = !FlxG.keys.pressed.F1;
 
-		if (FlxG.keys.justReleased.P && ResourcePacks.RESOURCE_PACKS.length > 0)
-		{
-			saveWorldInfo();
-			FlxG.switchState(() -> new ResourcePackMenu(camera));
-		}
-
 		if (FlxG.keys.justReleased.ESCAPE)
 		{
 			saveWorldInfo();
-			FlxTimer.wait(.1, () -> FlxG.switchState(() -> new DebugWorldSelection(camera)));
+
+			FlxG.switchState(() -> new MainMenu());
 		}
 
 		if (FlxG.keys.anyJustReleased([W, A, S, D, UP, LEFT, DOWN, RIGHT, ENTER, TAB, L]))

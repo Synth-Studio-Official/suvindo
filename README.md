@@ -30,7 +30,11 @@ Surely you're not just here to check out the code right?
 
 `ANYWHERE` : R - Reload Resource Packs and the Block list
 
-`ANYWHERE` : P - Leave to Resource Pack Menu (if you have resource packs)
+`MAIN MENU` : P - Leave to Resource Pack Menu (if you have resource packs)
+
+`MENUS` : W / Up Arrow Key - Move up
+
+`MENUS` : S / Down Arrow Key - Move down
 
 `GAMEPLAY` : WASD / Arrow Keys - Move the cursor block
 
@@ -42,29 +46,21 @@ Surely you're not just here to check out the code right?
 
 `GAMEPLAY` : L + SHIFT - Switch to the previous variation
 
-`GAMEPLAY` : F3 - Display extra info on the watermark
+`GAMEPLAY` : F3 - Display Debug Text
 
 `GAMEPLAY` : F1 - Hide ALL UI
 
 `GAMEPLAY` : ENTER - Place / Break blocks (depending on if you're touching a block)
 
-`GAMEPLAY` : ESCAPE - Leave to World Selection
-
-`RESOURCE PACK MENU` : W / Up Arrow Key - Move up
+`GAMEPLAY` : ESCAPE - Leave to Main Menu
 
 `RESOURCE PACK MENU` : W / Up Arrow Key + Shift - Move up and move the resource pack up in priority
-
-`RESOURCE PACK MENU` : S / Down Arrow Key - Move down
 
 `RESOURCE PACK MENU` : S / Down Arrow Key + Shift - Move down and move the resource pack down in priority
 
 `RESOURCE PACK MENU` : ENTER - Disable / Enable the currently selected Resource Pack
 
 `RESOURCE PACK MENU` : ESCAPE - Leave to PlayState / The Main Game
-
-`WORLD SELECTION MENU` : W / Up Arrow Key - Move up
-
-`WORLD SELECTION MENU` : S / Down Arrow Key - Move down
 
 `WORLD SELECTION MENU` : ENTER - Select the current world (or make a new world)
 
