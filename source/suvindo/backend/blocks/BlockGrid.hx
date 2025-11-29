@@ -94,7 +94,7 @@ class BlockGrid extends FlxTypedGroup<Block>
 						continue;
 					if (block?.y == null)
 						continue;
-					if (RequestsManager.REMOVE.blocks.contains(block?.block_id))
+					if (RequestsManager.REMOVE?.blocks.contains(block?.block_id))
 						continue;
 					if (!BlockList.BLOCK_LIST.contains(block?.block_id))
 						continue;
