@@ -4,7 +4,7 @@
 - Added new "convert" request type
 
 ## Blocks
-- If no blocks are found in the block list the dirt block is addeD
+- If no blocks or less then 2 blocks are found in the block list the dirt and plank block is added
 - Renamed "tree_trunk" to "log"
 - Added "Cactus" block
     - Type: "regular"
