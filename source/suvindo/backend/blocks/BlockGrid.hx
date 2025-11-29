@@ -1,5 +1,6 @@
 package suvindo.backend.blocks;
 
+import flixel.math.FlxPoint;
 import sys.FileSystem;
 import suvindo.backend.requests.Requests.RequestsManager;
 import sys.io.File;
@@ -90,6 +91,20 @@ class BlockGrid extends FlxTypedGroup<Block>
 
 			if (world_info.blocks != null)
 			{
+				var unique_positions:Array<FlxPoint> = [];
+				for (block in world_info.blocks)
+				{
+					if (block?.x == null)
+						continue;
+					if (block?.y == null)
+						continue;
+
+					var point:FlxPoint = new FlxPoint(block.x, block.y);
+					if (!unique_positions.contains(point))
+						unique_positions.push(point);
+					else 
+						world_info.blocks.remove(block);
+				}
 				for (block in world_info.blocks)
 				{
 					if (block?.block_id == null)
